@@ -1,8 +1,37 @@
 .google-login-btn {
-  padding: 8px 24px;
+  padding: 0.8rem 2.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  border-radius: 10px;
+  gap: 2rem;
+  border-radius: 1rem;
+
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 2.7rem;
+
+  color: var(--white);
+}
+
+.logged-in-btn {
+  padding: 0.8rem 1.6rem;
+}
+
+.google-logo {
+  width: 2.7rem;
+  border-radius: 100%;
+}
+
+@media (max-width: 480px) {
+  .google-login-btn {
+    border-radius: 10rem;
+    padding: 0.4rem;
+  }
+  .login-btn-txt {
+    display: none;
+  }
+  .google-logo {
+    width: 3.4rem;
+  }
 }
