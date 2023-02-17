@@ -1,0 +1,24 @@
+.chapter-title {
+  font-family: "Source Code Pro";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+
+  display: flex;
+  align-items: center;
+
+  color: var(--black);
+}
+
+.chapter-description {
+  font-family: "Source Code Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+
+  color: var(--black);
+}

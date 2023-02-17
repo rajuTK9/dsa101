@@ -4,16 +4,19 @@ import "./Navbar.css";
 // import { GoogleOAuthProvider } from "@react-oauth/google";
 import { Auth0Provider } from "@auth0/auth0-react";
 import LoginAuth0 from "../Login/LoginAuth0";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <div className="navbar">
-      <div className="logo">
-        <img src="assets/logo-full.svg" alt="DSA101" className="logo-img" />
-      </div>
-      <div className="logo-small">
-        <img src="assets/logo-chart.svg" alt="DSA101" className="logo-img" />
-      </div>
+      <Link to="/">
+        <div className="logo">
+          <img src="assets/logo-full.svg" alt="DSA101" className="logo-img" />
+        </div>
+        <div className="logo-small">
+          <img src="assets/logo-chart.svg" alt="DSA101" className="logo-img" />
+        </div>
+      </Link>
       <Auth0Provider
         domain="dev-ynlvngvzhos0c4m0.us.auth0.com"
         clientId="EX3BsaTmmEAZyZ8MtKObZhncV6fNkHqZ"

@@ -1,0 +1,38 @@
+.nav-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.nav-item:hover {
+  background-color: var(--periwinkle);
+  border-radius: 10px;
+}
+
+.nav-item-txt {
+  font-family: "Source Code Pro";
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+
+  padding: 18px 50px;
+  color: var(--black);
+}
+
+.nav-item.active {
+  color: var(--logo-purple);
+}
+
+.nav-item.active::before {
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--logo-purple);
+  height: 45px;
+  width: 6px;
+  border-radius: 0 20px 20px 0px;
+}
