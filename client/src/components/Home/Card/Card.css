@@ -1,0 +1,38 @@
+.card {
+  background-color: var(--periwinkle);
+  width: 23.7rem;
+  height: 32.6rem;
+
+  box-shadow: 0.3rem 0.4rem 1rem 0.2rem rgba(0, 0, 0, 0.25);
+  border-radius: 2rem;
+}
+
+.card .card-img {
+  width: 23.7rem;
+  height: 24.6rem;
+  background-position: center;
+  background-size: 85%;
+  background-repeat: no-repeat;
+  border-radius: 2rem;
+}
+
+.card-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--tropical-indigo);
+  border-radius: 0rem 0rem 2rem 2rem;
+
+  width: 23.7rem;
+  height: 8rem;
+}
+
+.card-title {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.8rem;
+  line-height: 4.2rem;
+
+  color: var(--white);
+}

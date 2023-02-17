@@ -18,6 +18,10 @@
   --parrot-green: #57dd94;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -48,4 +52,16 @@ a {
 
 .code {
   font-family: "Source Code Pro", monospace;
+}
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 48%;
+  }
+}
+
+@media (max-width: 800px) {
+  html {
+    font-size: 43%;
+  }
 }

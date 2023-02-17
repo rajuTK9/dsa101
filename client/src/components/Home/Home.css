@@ -1,0 +1,21 @@
+.home-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10rem;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0rem;
+  gap: 10vw;
+}
+
+@media (max-width: 680px) {
+  .cards-container {
+    flex-direction: column;
+    gap: 8rem;
+  }
+}
