@@ -45,6 +45,42 @@ export default function IndexPage() {
             <Chapter
               title="Chapter 1: Lorem ipsum dolor sit amet consectetur."
               description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
+              status="done"
+            />
+            <Chapter
+              title="Chapter 1: Lorem ipsum dolor sit amet consectetur."
+              description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
+              status="done"
+            />
+            <Chapter
+              title="Chapter 1: Lorem ipsum dolor sit amet consectetur."
+              description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
+              status="current"
+            />
+            <Chapter
+              title="Chapter 1: Lorem ipsum dolor sit amet consectetur."
+              description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
+              status="pending"
+            />
+            <Chapter
+              title="Chapter 1: Lorem ipsum dolor sit amet consectetur."
+              description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
+              status="pending"
+            />
+            <Chapter
+              title="Chapter 1: Lorem ipsum dolor sit amet consectetur."
+              description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
+              status="pending"
+            />
+            <Chapter
+              title="Chapter 1: Lorem ipsum dolor sit amet consectetur."
+              description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
+              status="pending"
+            />
+            <Chapter
+              title="Chapter 1: Lorem ipsum dolor sit amet consectetur."
+              description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
+              status="l-pending"
             />
           </div>
         </div>

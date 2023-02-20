@@ -11,10 +11,14 @@ export default function Navbar() {
     <div className="navbar">
       <Link to="/">
         <div className="logo">
-          <img src="assets/logo-full.svg" alt="DSA101" className="logo-img" />
+          <img src="./assets/logo-full.svg" alt="DSA101" className="logo-img" />
         </div>
         <div className="logo-small">
-          <img src="assets/logo-chart.svg" alt="DSA101" className="logo-img" />
+          <img
+            src="./assets/logo-chart.svg"
+            alt="DSA101"
+            className="logo-img"
+          />
         </div>
       </Link>
       <Auth0Provider

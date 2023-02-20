@@ -29,7 +29,7 @@
 
 .card-sm .card-body {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
 
   justify-content: start;
   color: var(--white);
@@ -40,7 +40,7 @@
 
 .card-sm .card-title {
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 30px;
   color: var(--white);
 }

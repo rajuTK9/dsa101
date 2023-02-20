@@ -1,0 +1,135 @@
+.quiz-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 10px;
+  padding: 20px 50px;
+  width: fit-content;
+  margin: auto;
+  background-color: var(--milky-grey);
+}
+
+.quiz-count {
+  padding: 15px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: var(--tropical-indigo);
+  width: fit-content;
+  color: var(--white);
+
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 30px;
+}
+
+.quiz-question-count {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--black);
+  opacity: 0.5;
+}
+
+.quiz-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 25px;
+  width: 70%;
+  margin: 30px 50px;
+}
+
+.quiz-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.quiz-question {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  display: flex;
+  align-items: center;
+
+  color: var(--black);
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px 34px;
+}
+
+.quiz-options .option {
+  border-radius: 10px;
+  padding: 10px 20px;
+  background-color: var(--periwinkle);
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+
+  color: var(--black);
+}
+
+.quiz-options .option.active {
+  background-color: var(--tropical-indigo);
+  color: white;
+}
+
+.quiz-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.quiz-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 8px 14px;
+  border-radius: 5px;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+
+  display: flex;
+  align-items: center;
+  text-align: right;
+
+  cursor: pointer;
+}
+
+.quiz-nav-prev {
+  background-color: var(--periwinkle);
+  color: var(--black);
+}
+
+.quiz-nav-nxt {
+  background-color: var(--tropical-indigo);
+  color: var(--white);
+}
