@@ -1,14 +1,22 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import "./Quiz.css";
 import quiz from "./sample_questions";
+import Option from "./Option";
 
-export default function Quiz() {
+export default function Quiz(props) {
   const [count, setCount] = useState(0);
-  const [score, setScore] = useState(0);
   const [selectedId, setSelectedId] = useState(-1);
-  // const [attempted, setAttempted] = useState(0);
 
-  const option = useRef();
+  const {
+    setQuizRendering,
+    setScore,
+    score,
+    setUserAnswer,
+    userAnswer,
+    setAttempted,
+    setIsSubmitted,
+    isSubmitted,
+  } = props;
 
   function remove_active() {
     document.querySelectorAll(".option").forEach((el) => {
@@ -29,16 +37,22 @@ export default function Quiz() {
     e.target.classList.add("active");
   }
 
-  function prev() {
-    remove_active();
-    if (count > 0) setCount((count) => (count -= 1));
-  }
+  // function prev() {
+  //   remove_active();
+  //   if (count > 0) setCount((count) => (count -= 1));
+  // }
 
   function next() {
     remove_active();
-    console.log(score);
+    if (selectedId >= 0) setAttempted((attempted) => (attempted += 1));
+    setUserAnswer([...userAnswer, { option: Number(selectedId) }]);
     evaluate();
     if (count < 4) setCount((count) => (count += 1));
+    else {
+      setIsSubmitted(true);
+      console.log(userAnswer);
+      setQuizRendering("result");
+    }
   }
 
   return (
@@ -53,29 +67,41 @@ export default function Quiz() {
             <h3>{quiz[count].question}</h3>
           </div>
           <div className="quiz-options">
-            <div className="option" id="0" onClick={select_option} ref={option}>
-              {quiz[count].options[0]}
-            </div>
-            <div className="option" id="1" onClick={select_option} ref={option}>
-              {quiz[count].options[1]}
-            </div>
-            <div className="option" id="2" onClick={select_option} ref={option}>
-              {quiz[count].options[2]}
-            </div>
-            <div className="option" id="3" onClick={select_option} ref={option}>
-              {quiz[count].options[3]}
-            </div>
+            {isSubmitted
+              ? quiz[count].options.map((e, i) => {
+                  return (
+                    <Option
+                      text={e}
+                      id={i}
+                      key={i}
+                      userAnswer={userAnswer[count].option}
+                      correctAnswer={quiz[count].correct}
+                      isSubmitted={isSubmitted}
+                    />
+                  );
+                })
+              : quiz[count].options.map((e, i) => {
+                  return (
+                    <Option
+                      text={e}
+                      id={i}
+                      key={i}
+                      selectOption={select_option}
+                      isSubmitted={isSubmitted}
+                    />
+                  );
+                })}
           </div>
         </div>
         <div className="quiz-nav">
-          <div className="quiz-nav-btn quiz-nav-prev" onClick={prev}>
-            <img src="./assets/icons/arrow-left-black.svg" alt="" />
+          {/* <div className="quiz-nav-btn quiz-nav-prev" onClick={prev}>
+            <img src="/assets/icons/arrow-left-black.svg" alt="" />
             Prev
-          </div>
+          </div> */}
           Score: {score}
           <div className="quiz-nav-btn quiz-nav-nxt" onClick={next}>
             Next
-            <img src="./assets/icons/arrow-right-white.svg" alt="" />
+            <img src="/assets/icons/arrow-right-white.svg" alt="" />
           </div>
         </div>
       </div>

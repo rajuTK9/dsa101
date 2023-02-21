@@ -1,0 +1,78 @@
+.result-heading h1 {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: left;
+  color: var(--black);
+}
+
+.result-content {
+  display: flex;
+  gap: 30px;
+}
+
+.progress-graph {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 36px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+  text-align: right;
+
+  height: 120px;
+  width: 120px;
+}
+
+.report {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: var(--black);
+
+  padding: 18px;
+
+  background-color: var(--periwinkle);
+  border-radius: 10px;
+}
+
+.report .report-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 100px;
+}
+
+.report .report-row .legend {
+  min-width: 250px;
+}
+
+.ans-btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  padding: 10px 20px;
+  background: var(--tropical-indigo);
+  border-radius: 10px;
+
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+
+  color: var(--white);
+
+  margin: auto;
+}

@@ -29,7 +29,6 @@ export default function IndexPage() {
           <div className="index-cards-container">
             <CardSM
               title={"Basic"}
-              isActive={"True"}
               img={"./assets/illustrations/basic-dsa.svg"}
             />
             <CardSM

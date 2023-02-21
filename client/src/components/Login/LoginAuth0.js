@@ -24,7 +24,7 @@ export default function LoginAuth0() {
       onClick={() => loginWithRedirect()}
     >
       <img
-        src="./assets/icons/google-logo.svg"
+        src="/assets/icons/google-logo.svg"
         alt="G"
         className="google-logo"
       />
