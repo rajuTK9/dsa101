@@ -1,0 +1,56 @@
+.chapter-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  cursor: pointer;
+}
+
+.chapter-progress {
+  margin-bottom: -5px;
+}
+
+.chapter-main {
+  display: flex;
+  gap: 150px;
+  cursor: pointer;
+}
+
+.chapter-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.chapter-content .chapter-title {
+  font-family: "Source Code Pro";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+
+  display: flex;
+  align-items: center;
+
+  color: var(--black);
+}
+
+.chapter-content .chapter-description {
+  font-family: "Source Code Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+
+  color: var(--black);
+}
+
+.chapter-arrow {
+  display: none;
+  align-items: center;
+}
+
+.chapter-container:hover .chapter-arrow {
+  display: flex;
+}
