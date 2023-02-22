@@ -7,6 +7,7 @@ import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 import Notes from "./components/Notes/Notes";
 import EditNotes from "./components/EditNotes/EditNotes";
+import NotesIcon from "./components/NotesIcon/NotesIcon";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/notes" element={<Notes />} />
         <Route path="/edit-notes" element={<EditNotes />} />
       </Routes>
+      <NotesIcon />
     </>
   );
 }
