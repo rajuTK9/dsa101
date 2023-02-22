@@ -1,0 +1,32 @@
+.quiz-options .option {
+  border-radius: 10px;
+  padding: 10px 20px;
+  background-color: var(--periwinkle);
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+
+  color: var(--black);
+}
+
+.quiz-options .option.active {
+  background-color: var(--tropical-indigo);
+  color: white;
+}
+
+.quiz-options .option.correct {
+  background-color: var(--parrot-green);
+}
+
+.quiz-options .option.wrong {
+  background-color: var(--chilly-red);
+}
