@@ -6,7 +6,7 @@ import Learning from "./components/Learning/Learning";
 import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 import Notes from "./components/Notes/Notes";
-import EditNotes from "./components/EditNotes/EditNotes";
+import CourseUpload from "./components/Admin/CourseUpload/CourseUpload";
 import NotesIcon from "./components/NotesIcon/NotesIcon";
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         <Route path="/:id" element={<Index />} />
         <Route path="/learning/:id" element={<Learning />} />
         <Route path="/notes" element={<Notes />} />
-        <Route path="/edit-notes" element={<EditNotes />} />
+        <Route path="/admin-upload" element={<CourseUpload />} />
       </Routes>
       <NotesIcon />
     </>
