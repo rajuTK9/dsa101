@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import CardSM from "./CardSM/CardSM";
 import Chapter from "./Chapter/Chapter";
 import "./IndexPage.css";
 import NavItem from "./NavItem/NavItem";
 
 export default function IndexPage() {
+  const [navbarCollapse, setNavbarCollapse] = useState(false);
   return (
     <div className="index-container">
       <div className="index-hero"></div>
       <div className="index-main">
-        <div className="index-navbar">
+        <div
+          className={navbarCollapse ? "index-navbar expand" : "index-navbar"}
+        >
           <NavItem title="Basics of C++" isActive="true" />
           <NavItem title="Strings" />
           <NavItem title="Arrays" />
@@ -24,6 +27,16 @@ export default function IndexPage() {
           <NavItem title="Trees" />
           <NavItem title="Hashmaps" />
           <NavItem title="D.P." />
+          <div
+            className="navbar-collapse-icon"
+            onClick={() => setNavbarCollapse(!navbarCollapse)}
+          >
+            {navbarCollapse ? (
+              <img src="/assets/icons/arrow-left-black.svg" alt="" />
+            ) : (
+              <img src="/assets/icons/arrow-right-white.svg" alt="" />
+            )}
+          </div>
         </div>
         <div className="index-content">
           <div className="index-cards-container">

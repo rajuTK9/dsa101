@@ -1,13 +1,13 @@
 .quiz-options .option {
-  border-radius: 10px;
-  padding: 10px 20px;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
   background-color: var(--periwinkle);
 
   font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
-  line-height: 27px;
+  font-size: 1.8rem;
+  line-height: 2.7rem;
   /* identical to box height */
 
   display: flex;

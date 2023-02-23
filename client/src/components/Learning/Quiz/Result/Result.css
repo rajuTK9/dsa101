@@ -1,30 +1,30 @@
 .result-heading h1 {
   font-family: "Poppins";
   font-weight: 600;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 2.4rem;
+  line-height: 3.6rem;
   text-align: left;
   color: var(--black);
 }
 
 .result-content {
   display: flex;
-  gap: 30px;
+  gap: 3rem;
 }
 
 .progress-graph {
   font-family: "Poppins";
   font-weight: 600;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 2.4rem;
+  line-height: 3.6rem;
   /* identical to box height */
 
   display: flex;
   align-items: center;
   text-align: right;
 
-  height: 120px;
-  width: 120px;
+  height: 12rem;
+  width: 12rem;
 }
 
 .report {
@@ -32,47 +32,67 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 1rem;
 
   font-family: "Poppins";
   font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
 
   color: var(--black);
 
-  padding: 18px;
+  padding: 1.8rem;
 
   background-color: var(--periwinkle);
-  border-radius: 10px;
+  border-radius: 1rem;
 }
 
 .report .report-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 100px;
+  gap: 10rem;
 }
 
 .report .report-row .legend {
-  min-width: 250px;
+  min-width: 25rem;
 }
 
 .ans-btn {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 1.5rem;
 
-  padding: 10px 20px;
+  padding: 1rem 2rem;
   background: var(--tropical-indigo);
-  border-radius: 10px;
+  border-radius: 1rem;
 
   font-family: "Poppins";
   font-weight: 700;
-  font-size: 18px;
-  line-height: 27px;
+  font-size: 1.8rem;
+  line-height: 2.7rem;
 
   color: var(--white);
 
   margin: auto;
+}
+
+@media (max-width: 600px) {
+  .result-content {
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+  }
+}
+
+@media (max-width: 440px) {
+  .report .report-row {
+    gap: 0rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .report .report-row .legend {
+    min-width: 20rem;
+  }
 }

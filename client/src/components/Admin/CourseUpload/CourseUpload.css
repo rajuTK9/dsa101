@@ -69,4 +69,9 @@
   font-size: 18px;
   border-radius: 5px;
   padding: 5px 10px;
+  line-height: 27px;
+}
+
+.jodit-status-bar a.jodit-status-bar-link {
+  display: none;
 }

@@ -23,6 +23,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-size: inherit;
 }
 
 html {
@@ -46,8 +47,8 @@ button {
   background-color: var(--tropical-indigo);
   color: var(--white);
   font-weight: 700;
-  font-size: 18px;
-  line-height: 27px;
+  font-size: 1.8rem;
+  line-height: 2.7rem;
   display: flex;
   align-items: center;
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Quiz.css";
 import quiz from "./sample_questions";
-import Option from "./Option";
+import Option from "./Option/Option";
 
 export default function Quiz(props) {
   const [count, setCount] = useState(0);
