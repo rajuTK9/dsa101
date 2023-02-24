@@ -109,6 +109,10 @@
   color: var(--white);
 }
 
+.quiz-warning {
+  color: var(--chilly-red);
+}
+
 @media (max-width: 550px) {
   .quiz-options {
     grid-template-columns: 1fr;
