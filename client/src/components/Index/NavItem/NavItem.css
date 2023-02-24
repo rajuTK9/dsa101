@@ -7,18 +7,18 @@
 
 .nav-item:hover {
   background-color: var(--periwinkle);
-  border-radius: 10px;
+  border-radius: 1rem;
 }
 
 .nav-item-txt {
   font-family: "Source Code Pro";
   font-weight: 400;
-  font-size: 18px;
-  line-height: 25px;
+  font-size: 1.8rem;
+  line-height: 2.5rem;
   display: flex;
   align-items: center;
 
-  padding: 18px 50px;
+  padding: 1.8rem 5rem;
   color: var(--black);
 }
 
@@ -32,7 +32,7 @@
   align-items: center;
   justify-content: center;
   background-color: var(--logo-purple);
-  height: 45px;
-  width: 6px;
-  border-radius: 0 20px 20px 0px;
+  height: 4.5rem;
+  width: 0.6rem;
+  border-radius: 0 2rem 2rem 0rem;
 }

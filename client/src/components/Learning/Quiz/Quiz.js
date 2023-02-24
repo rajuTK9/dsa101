@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./Quiz.css";
 import quiz from "./sample_questions";
-import Option from "./Option";
+import Option from "./Option/Option";
 
 export default function Quiz(props) {
   const [count, setCount] = useState(0);
   const [selectedId, setSelectedId] = useState(-1);
+  const [warning, setWarning] = useState("");
 
   const {
     setQuizRendering,
@@ -43,10 +44,16 @@ export default function Quiz(props) {
   // }
 
   function next() {
+    if (selectedId === -1 && !isSubmitted) {
+      setWarning("Please select an option to go next");
+      return;
+    }
+    setWarning("");
     remove_active();
     if (selectedId >= 0) setAttempted((attempted) => (attempted += 1));
     setUserAnswer([...userAnswer, { option: Number(selectedId) }]);
     evaluate();
+    setSelectedId(-1);
     if (count < 4) setCount((count) => (count += 1));
     else {
       setIsSubmitted(true);
@@ -98,11 +105,15 @@ export default function Quiz(props) {
             <img src="/assets/icons/arrow-left-black.svg" alt="" />
             Prev
           </div> */}
-          Score: {score}
-          <div className="quiz-nav-btn quiz-nav-nxt" onClick={next}>
+          {warning ? (
+            <p className="quiz-warning">{warning}</p>
+          ) : (
+            <p className="quiz-score">Score: {score}</p>
+          )}
+          <button className="quiz-nav-btn quiz-nav-nxt" onClick={next}>
             Next
             <img src="/assets/icons/arrow-right-white.svg" alt="" />
-          </div>
+          </button>
         </div>
       </div>
     </div>

@@ -23,6 +23,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-size: inherit;
 }
 
 html {
@@ -32,6 +33,7 @@ html {
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
+  background-color: var(--milky-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -46,8 +48,8 @@ button {
   background-color: var(--tropical-indigo);
   color: var(--white);
   font-weight: 700;
-  font-size: 18px;
-  line-height: 27px;
+  font-size: 1.8rem;
+  line-height: 2.7rem;
   display: flex;
   align-items: center;
 }

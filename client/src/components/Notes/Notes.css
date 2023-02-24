@@ -1,16 +1,16 @@
 .edit-notes {
-  padding: 25px;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 2rem;
 }
 
 .go-back-btn {
   display: flex;
-  gap: 15px;
-  padding: 8px 16px;
-  border-radius: 10px;
-  width: 150px;
+  gap: 1.5rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 1rem;
+  width: 15rem;
   cursor: pointer;
 }
 
@@ -21,4 +21,18 @@
 .edit-notes .editor-container {
   width: 70vw;
   margin: auto;
+}
+
+.jodit-status-bar a.jodit-status-bar-link {
+  display: none;
+}
+
+.jodit-wysiwyg {
+  min-height: 40vh !important;
+  font-size: 16px;
+  font-family: poppins;
+}
+
+.jodit-status-bar {
+  height: fit-content;
 }

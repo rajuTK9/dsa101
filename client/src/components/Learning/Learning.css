@@ -1,0 +1,33 @@
+.learning-main {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  padding: 20px 70px 50px 0px;
+}
+
+.learning-index-container {
+  position: relative;
+  padding: 5rem;
+}
+
+.index-divider {
+  height: 1px;
+  border-bottom: 1px solid var(--periwinkle);
+}
+
+.index-divider:last-child {
+  display: none;
+}
+
+@media (max-width: 650px) {
+  .learning-main {
+    padding: 7rem;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .learning-index-container {
+    display: none;
+  }
+}
