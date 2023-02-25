@@ -26,14 +26,71 @@ export default function CourseUpload() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   }
-  function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
-  }
+    const {
+      category,
+      chapter,
+      content,
+      correct1,
+      correct2,
+      correct3,
+      correct4,
+      correct5,
+      options1,
+      options2,
+      options3,
+      options4,
+      options5,
+      question1,
+      question2,
+      question3,
+      question4,
+      question5,
+      topic,
+    } = formData;
+    const res = await fetch("/admin-upload", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        category,
+        chapter,
+        content,
+        correct1,
+        correct2,
+        correct3,
+        correct4,
+        correct5,
+        options1,
+        options2,
+        options3,
+        options4,
+        options5,
+        question1,
+        question2,
+        question3,
+        question4,
+        question5,
+        topic,
+      }),
+    });
+    const data = await res.json();
+
+    if (data.status === 422 || data.status === 500) {
+      alert(data.error);
+    } else {
+      alert("Chapter added scuccessfully!");
+    }
+
+    console.log(data);
+  };
   return (
     <div className="course-upload-container">
       <h1 className="heading">Upload the course</h1>
-      <form onSubmit={handleSubmit} className="course-form">
+      <form method="POST" onSubmit={handleSubmit} className="course-form">
         <div className="form-item-wrapper">
           <div className="form-item">
             <label htmlFor="course-category">Category</label>

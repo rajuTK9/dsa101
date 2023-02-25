@@ -5,6 +5,35 @@ import "./Login.css";
 export default function LoginAuth0() {
   const { loginWithRedirect, user, isAuthenticated, isLoading, logout } =
     useAuth0();
+  console.log(user);
+
+  const sendUserData = async () => {
+    try {
+      const { name } = user;
+      const res = await fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+        }),
+      });
+      const data = await res.json();
+
+      if (data.status === 422 || data.status === 500) {
+        alert(data.error);
+      } else {
+        alert("Chapter added scuccessfully!");
+      }
+
+      console.log(data);
+    } catch (err) {
+      console.log("An erros occured: " + err);
+    }
+  };
+
+  if (isAuthenticated) sendUserData();
 
   return isAuthenticated ? (
     <button
