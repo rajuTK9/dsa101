@@ -5,6 +5,7 @@ import Result from "./Quiz/Result/Result";
 import TakeQuiz from "./Quiz/TakeQuiz/TakeQuiz";
 import LearningIndex from "./LearningIndex/LearningIndex";
 import Content from "./Content/Content";
+import LearningNavigation from "./LearningNavigation/LearningNavigation";
 
 export default function Learning() {
   const [quizRendering, setQuizRendering] = useState("");
@@ -242,6 +243,7 @@ export default function Learning() {
               <>OOPS! 404 - NOT FOUND...</>
             )}
           </div>
+          <LearningNavigation />
         </div>
       </div>
     </div>

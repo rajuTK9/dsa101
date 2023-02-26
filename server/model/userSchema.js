@@ -1,14 +1,18 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  quizPerformance: {
+  name: {
     type: Object,
     required: true,
   },
-  notes: {
-    type: String,
-    required: true,
-  },
+  // quizPerformance: {
+  //   type: Object,
+  //   required: true,
+  // },
+  // notes: {
+  //   type: String,
+  //   required: true,
+  // },
 });
 
 const Course = mongoose.model("USER", userSchema);

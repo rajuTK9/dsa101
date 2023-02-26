@@ -9,15 +9,78 @@ router.get("/", (req, res) => {
 });
 
 router.post("/admin-upload", async (req, res) => {
-  const { category, topic, chapter, content, quiz } = req.body;
-  if (!(category || topic || chapter || content || quiz)) {
+  const {
+    category,
+    chapter,
+    content,
+    correct1,
+    correct2,
+    correct3,
+    correct4,
+    correct5,
+    options1,
+    options2,
+    options3,
+    options4,
+    options5,
+    question1,
+    question2,
+    question3,
+    question4,
+    question5,
+    topic,
+  } = req.body;
+  if (
+    !(
+      category &&
+      topic &&
+      chapter &&
+      content &&
+      correct1 &&
+      correct2 &&
+      correct3 &&
+      correct4 &&
+      correct5 &&
+      options1 &&
+      options2 &&
+      options3 &&
+      options4 &&
+      options5 &&
+      question1 &&
+      question2 &&
+      question3 &&
+      question4 &&
+      question5
+    )
+  ) {
     return res
       .status(422)
-      .json({ error: "Please fill all the required fields" });
+      .json({ error: "Please fill all the required fields", status: 422 });
   }
 
   try {
-    const data = new Course({ category, topic, chapter, content, quiz });
+    const data = new Course({
+      category,
+      chapter,
+      content,
+      correct1,
+      correct2,
+      correct3,
+      correct4,
+      correct5,
+      options1,
+      options2,
+      options3,
+      options4,
+      options5,
+      question1,
+      question2,
+      question3,
+      question4,
+      question5,
+      topic,
+      // quiz,
+    });
 
     await data.save();
 
@@ -25,18 +88,24 @@ router.post("/admin-upload", async (req, res) => {
   } catch (err) {
     res.status(500).json({
       error: "An error occured, please try again later. \n Error:",
+      status: 500,
       err,
     });
   }
 });
 
 router.post("/login", async (req, res) => {
-  const { quizPerformance, notes } = req.body;
-  if (!(quizPerformance || notes)) {
+  const { name } = req.body;
+  if (!name) {
     return res.status(422).json({ error: "Incomplete information" });
   }
+  // const { quizPerformance, notes } = req.body;
+  // if (!(quizPerformance || notes)) {
+  //   return res.status(422).json({ error: "Incomplete information" });
+  // }
   try {
-    const data = new User({ quizPerformance, notes });
+    // const data = new User({ quizPerformance, notes });
+    const data = new User({ name });
 
     await data.save();
 

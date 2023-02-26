@@ -1,0 +1,68 @@
+.learning-nav {
+  margin-top: 5rem;
+  margin-bottom: 10rem;
+}
+
+.learning-btns-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.learning-btn {
+  display: flex;
+  gap: 2rem;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+}
+
+.learning-btn.btn-prev {
+  background: var(--periwinkle);
+}
+
+.learning-btn-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.learning-btn.btn-prev .learning-btn-body {
+  align-items: flex-end;
+}
+
+.learning-btn-subtitle {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 2.1rem;
+
+  color: var(--dark-black);
+}
+
+.learning-btn-title {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: var(--black);
+}
+
+.learning-btn.btn-nxt {
+  background: var(--tropical-indigo);
+}
+
+.learning-btn.btn-nxt .learning-btn-subtitle {
+  color: var(--milky-grey);
+}
+
+.learning-btn.btn-nxt .learning-btn-title {
+  color: var(--white);
+}
+
+@media (max-width: 360px) {
+  .learning-btns-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
