@@ -125,4 +125,42 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.delete("/delete/:id", async (req, res) => {
+  try {
+    await Course.findByIdAndDelete(req.params.id);
+    res
+      .status(201)
+      .json({ message: "The chapter has been deleted successfully." });
+  } catch (err) {
+    res.status(500).json({
+      error: "An error occured, please try again later. \n",
+      status: 500,
+      err,
+    });
+  }
+});
+
+router.put("/update", async (req, res) => {
+  const { id, category, chapter, content, quiz, topic, chapterId } = req.body;
+  try {
+    const data = await Course.findById(id);
+    data.category = category;
+    data.chapter = chapter;
+    data.content = content;
+    data.quiz = quiz;
+    data.topic = topic;
+    data.chapterId = chapterId;
+    data.save();
+    res
+      .status(201)
+      .json({ message: "The chapter has been updated successfully." });
+  } catch (err) {
+    res.status(500).json({
+      error: "An error occured, please try again later. \n Error:",
+      status: 500,
+      err,
+    });
+  }
+});
+
 module.exports = router;
