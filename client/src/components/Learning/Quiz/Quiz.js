@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Quiz.css";
-import quiz from "./sample_questions";
 import Option from "./Option/Option";
 
 export default function Quiz(props) {
@@ -17,6 +16,7 @@ export default function Quiz(props) {
     setAttempted,
     setIsSubmitted,
     isSubmitted,
+    courseData,
   } = props;
 
   function remove_active() {
@@ -28,7 +28,7 @@ export default function Quiz(props) {
   }
 
   function evaluate() {
-    if (selectedId === quiz[count].correct.toString())
+    if (selectedId === courseData.quiz[count].correct.toString())
       setScore((score) => (score += 1));
   }
 
@@ -57,11 +57,9 @@ export default function Quiz(props) {
     if (count < 4) setCount((count) => (count += 1));
     else {
       setIsSubmitted(true);
-      console.log(userAnswer);
       setQuizRendering("result");
     }
   }
-
   return (
     <div className="quiz-container">
       <div className="quiz-count">
@@ -71,23 +69,24 @@ export default function Quiz(props) {
       <div className="quiz-main">
         <div className="quiz-content">
           <div className="quiz-question">
-            <h3>{quiz[count].question}</h3>
+            {/* <h3>{quiz[count].question}</h3> */}
+            <h3>{courseData.quiz[count].question}</h3>
           </div>
           <div className="quiz-options">
             {isSubmitted
-              ? quiz[count].options.map((e, i) => {
+              ? courseData.quiz[count].options.map((e, i) => {
                   return (
                     <Option
                       text={e}
                       id={i}
                       key={i}
                       userAnswer={userAnswer[count].option}
-                      correctAnswer={quiz[count].correct}
+                      correctAnswer={Number(courseData.quiz[count].correct)}
                       isSubmitted={isSubmitted}
                     />
                   );
                 })
-              : quiz[count].options.map((e, i) => {
+              : courseData.quiz[count].options.map((e, i) => {
                   return (
                     <Option
                       text={e}

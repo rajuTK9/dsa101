@@ -41,6 +41,10 @@
   gap: 5px;
 }
 
+.form-item-wrapper.chapter {
+  grid-template-columns: 0.1fr 1fr;
+}
+
 .form-item input,
 .form-item select,
 .form-item textarea {

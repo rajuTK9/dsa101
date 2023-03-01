@@ -5,7 +5,6 @@ import "./Login.css";
 export default function LoginAuth0() {
   const { loginWithRedirect, user, isAuthenticated, isLoading, logout } =
     useAuth0();
-  console.log(user);
 
   const sendUserData = async () => {
     try {
@@ -24,7 +23,7 @@ export default function LoginAuth0() {
       if (data.status === 422 || data.status === 500) {
         alert(data.error);
       } else {
-        alert("Chapter added scuccessfully!");
+        console.log(data.message);
       }
 
       console.log(data);

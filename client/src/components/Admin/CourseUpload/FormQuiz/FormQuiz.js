@@ -2,11 +2,31 @@ import React from "react";
 import "./FormQuiz.css";
 
 export default function FormQuiz(props) {
-  const { onChangeHandler } = props;
-  //   function onChangeHandler(e) {
-  //     const { name, value } = e.target;
-  //     props.setFormData({ ...props.formData, [name]: value });
-  //   }
+  const { quiz, id } = props;
+  let content = quiz;
+  let options = quiz[id - 1].options;
+
+  function onChangeHandle(e) {
+    const { name, value } = e.target;
+
+    content[id - 1] = { ...content[id - 1], [name]: value };
+
+    props.setFormData({
+      ...props.formData,
+      quiz: content,
+    });
+  }
+
+  function handleOptions(e) {
+    options[e.target.id] = e.target.value;
+    console.log(options);
+    content[id - 1] = { ...content[id - 1], options: options };
+    props.setFormData({
+      ...props.formData,
+      quiz: content,
+    });
+  }
+
   return (
     <div className="quiz-question-container">
       <div className="form-item">
@@ -14,27 +34,50 @@ export default function FormQuiz(props) {
         <input
           type="text"
           placeholder="Question"
-          name={`question${props.id}`}
-          onChange={onChangeHandler}
+          name="question"
+          onChange={onChangeHandle}
         />
       </div>
       <div className="form-item">
         <label>Options</label>
-        <textarea
-          name={`options${props.id}`}
-          id="options"
-          cols="30"
-          rows="5"
-          onChange={onChangeHandler}
-        ></textarea>
+        <div className="options-container">
+          <input
+            name="optionA"
+            placeholder="Option A"
+            id="0"
+            type="text"
+            onChange={handleOptions}
+          />
+          <input
+            name="optionB"
+            placeholder="Option B"
+            id="1"
+            type="text"
+            onChange={handleOptions}
+          />
+          <input
+            name="optionC"
+            placeholder="Option C"
+            id="2"
+            type="text"
+            onChange={handleOptions}
+          />
+          <input
+            name="optionD"
+            placeholder="Option D"
+            id="3"
+            type="text"
+            onChange={handleOptions}
+          />
+        </div>
       </div>
       <div className="form-item">
         <label>Correct Index</label>
         <input
-          name={`correct${props.id}`}
-          type="text"
+          name="correct"
+          type="number"
           placeholder="0"
-          onChange={onChangeHandler}
+          onChange={onChangeHandle}
         />
       </div>
     </div>
