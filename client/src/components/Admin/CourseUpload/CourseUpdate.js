@@ -15,7 +15,8 @@ export default function CourseUpdate() {
   const [formData, setFormData] = useState();
   if (oldData && !formData) setFormData(oldData);
 
-  const updateChapter = async () => {
+  const updateChapter = async (e) => {
+    e.preventDefault();
     const { category, chapter, content, quiz, topic, chapterId } = formData;
     try {
       const res = await fetch("/update", {
@@ -33,18 +34,16 @@ export default function CourseUpdate() {
           chapterId,
         }),
       });
-      console.log(res);
       const data = await res.json();
-      console.log(data);
+      navigate(`/learning/${chapter}`);
       if (data.status === 422 || data.status === 500) {
         alert(data.error);
-        navigate(`/learning/${chapter}`);
         return data.error;
       } else {
         alert(data.message);
       }
     } catch (err) {
-      return "An erros occured: " + err;
+      console.log("An erros occured: " + err);
     }
   };
 
@@ -57,7 +56,7 @@ export default function CourseUpdate() {
     <div className="course-upload-container">
       <h1 className="heading">UPDATE the course</h1>
       {formData && (
-        <form method="POST" onSubmit={updateChapter} className="course-form">
+        <form method="PUT" onSubmit={updateChapter} className="course-form">
           <div className="form-item-wrapper">
             <div className="form-item">
               <label htmlFor="course-category">Category</label>

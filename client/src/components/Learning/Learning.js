@@ -7,7 +7,7 @@ import LearningIndex from "./LearningIndex/LearningIndex";
 import Content from "./Content/Content";
 import LearningNavigation from "./LearningNavigation/LearningNavigation";
 import GetCourse from "../../data/GetCourse";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 
 export default function Learning() {
@@ -19,6 +19,7 @@ export default function Learning() {
   const [chapterIndex, setChapterIndex] = useState([]);
 
   const params = useParams();
+  const navigate = useNavigate();
 
   const courseData = GetCourse(`/chapters/${params.id}`);
 
@@ -43,6 +44,7 @@ export default function Learning() {
     const concent = prompt(`Type 'y' to delte "${courseData.chapter}" chapter`);
     if (concent === "y") {
       deleteChapter();
+      navigate(`/${courseData.category}`);
     }
   }
   return (
