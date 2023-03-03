@@ -1,32 +1,26 @@
 import React, { useState } from "react";
 import "./TakeQuiz.css";
-// import { useAuth0 } from "@auth0/auth0-react";
-// import LoginAuth0 from "../../../Login/LoginAuth0";
-// import { Auth0Provider } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
+import LoginAuth0 from "../../../Login/LoginAuth0";
+import Quiz from "../Quiz";
 
 export default function TakeQuiz(props) {
   const [startQuiz, setStartQuiz] = useState(false);
 
-  // const { isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
   return (
     <div className="quiz-container">
       {startQuiz ? (
         <>
-          {/* {isAuthenticated ? (
-            <Quiz />
+          {isAuthenticated ? (
+            <>
+              {" "}
+              {props.setQuizRendering("quiz")} <Quiz />
+            </>
           ) : (
-            <Auth0Provider
-              domain="dev-ynlvngvzhos0c4m0.us.auth0.com"
-              clientId="EX3BsaTmmEAZyZ8MtKObZhncV6fNkHqZ"
-              authorizationParams={{
-                redirect_uri: window.location.origin,
-              }}
-            >
-              <LoginAuth0 />
-            </Auth0Provider>
-          )} */}
-          {props.setQuizRendering("quiz")}
+            <LoginAuth0 />
+          )}
         </>
       ) : (
         <button

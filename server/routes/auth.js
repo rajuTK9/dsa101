@@ -17,6 +17,15 @@ router.get("/get-course", async (req, res) => {
   }
 });
 
+router.get("/get-user/:id", async (req, res) => {
+  try {
+    const userData = await User.find({ uid: req.params.id });
+    res.json(userData);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 router.get("/categories/:id", async (req, res) => {
   console.log(req.params.id);
   try {
@@ -102,21 +111,19 @@ router.post("/admin-upload", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  const { name } = req.body;
-  if (!name) {
+  const { name, notes, uid, completed_chapters } = req.body;
+  if (!(name || notes || uid || completed_chapters)) {
     return res.status(422).json({ error: "Incomplete information" });
   }
-  // const { quizPerformance, notes } = req.body;
-  // if (!(quizPerformance || notes)) {
-  //   return res.status(422).json({ error: "Incomplete information" });
-  // }
   try {
-    // const data = new User({ quizPerformance, notes });
-    const data = new User({ name });
-
+    const user = await User.findOne({
+      uid: uid,
+    });
+    if (user) {
+      return res.status(201).json([{ message: "User already exist." }]);
+    }
+    const data = new User({ name, notes, uid, completed_chapters });
     await data.save();
-
-    res.status(201).json({ message: "User information saved successfully." });
   } catch (err) {
     res.status(500).json({
       error: "An error occured, please try again later. \n Error:",
@@ -125,16 +132,31 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.delete("/delete/:id", async (req, res) => {
+router.put("/save-notes", async (req, res) => {
+  const { notes, uid } = req.body;
   try {
-    await Course.findByIdAndDelete(req.params.id);
-    res
-      .status(201)
-      .json({ message: "The chapter has been deleted successfully." });
+    const user = await User.findOne({ uid: uid });
+    user.notes = notes;
+    await user.save();
+    res.status(201).json({ message: "Notes saved successfully." });
   } catch (err) {
     res.status(500).json({
-      error: "An error occured, please try again later. \n",
-      status: 500,
+      error: "An error occured, please try again later. \n Error:",
+      err,
+    });
+  }
+});
+
+router.put("/update-chapter", async (req, res) => {
+  const { completed_chapters, uid } = req.body;
+  try {
+    const user = await User.findOne({ uid: uid });
+    user.completed_chapters = completed_chapters;
+    await user.save();
+    res.status(201).json({ message: "Chapter updated successfully." });
+  } catch (err) {
+    res.status(500).json({
+      error: "An error occured, please try again later. \n Error:",
       err,
     });
   }
@@ -157,6 +179,21 @@ router.put("/update", async (req, res) => {
   } catch (err) {
     res.status(500).json({
       error: "An error occured, please try again later. \n Error:",
+      status: 500,
+      err,
+    });
+  }
+});
+
+router.delete("/delete/:id", async (req, res) => {
+  try {
+    await Course.findByIdAndDelete(req.params.id);
+    res
+      .status(201)
+      .json({ message: "The chapter has been deleted successfully." });
+  } catch (err) {
+    res.status(500).json({
+      error: "An error occured, please try again later. \n",
       status: 500,
       err,
     });

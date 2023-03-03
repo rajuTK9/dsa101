@@ -7,6 +7,7 @@ import LearningIndex from "./LearningIndex/LearningIndex";
 import Content from "./Content/Content";
 import LearningNavigation from "./LearningNavigation/LearningNavigation";
 import GetCourse from "../../data/GetCourse";
+import GetUser from "../../data/GetUser";
 import { useParams, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 
@@ -22,6 +23,7 @@ export default function Learning() {
   const navigate = useNavigate();
 
   const courseData = GetCourse(`/chapters/${params.id}`);
+  const user = GetUser();
 
   const deleteChapter = async () => {
     try {
@@ -56,16 +58,18 @@ export default function Learning() {
               <LearningIndex chapterIndex={chapterIndex} />
             </div>
             <div className="learning-content-container">
-              <div className="admin-btns">
-                <Link to={`/admin-upload/${courseData.chapter}`}>
-                  <button className="chapter-edit-btn">
-                    <img src="/assets/icons/notes-edit.svg" alt="" />
+              {user && user.isAdmin && (
+                <div className="admin-btns">
+                  <Link to={`/admin-upload/${courseData.chapter}`}>
+                    <button className="chapter-edit-btn">
+                      <img src="/assets/icons/notes-edit.svg" alt="" />
+                    </button>
+                  </Link>
+                  <button className="chapter-delete-btn" onClick={handleDelete}>
+                    <img src="/assets/icons/chapter-delete.svg" alt="" />
                   </button>
-                </Link>
-                <button className="chapter-delete-btn" onClick={handleDelete}>
-                  <img src="/assets/icons/chapter-delete.svg" alt="" />
-                </button>
-              </div>
+                </div>
+              )}
               <Content
                 setChapterIndex={setChapterIndex}
                 data={courseData.content}

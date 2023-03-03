@@ -5,14 +5,21 @@ const userSchema = new mongoose.Schema({
     type: Object,
     required: true,
   },
-  // quizPerformance: {
-  //   type: Object,
-  //   required: true,
-  // },
-  // notes: {
-  //   type: String,
-  //   required: true,
-  // },
+  completed_chapters: {
+    type: Array,
+    required: true,
+  },
+  notes: {
+    type: String,
+    required: true,
+  },
+  uid: {
+    type: String,
+    required: true,
+  },
+  isAdmin: {
+    type: Boolean,
+  },
 });
 
 const Course = mongoose.model("USER", userSchema);
