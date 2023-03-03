@@ -12,7 +12,6 @@ export default function NotesIcon() {
     if (isAuthenticated) navigate("/notes");
     else setShowLogin(true);
   }
-  console.log(isAuthenticated);
   return (
     <div className="notes-icon-container">
       {showLogin ? (

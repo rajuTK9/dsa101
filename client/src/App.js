@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Notes from "./components/Notes/Notes";
 import CourseUpload from "./components/Admin/CourseUpload/CourseUpload";
 import NotesIcon from "./components/NotesIcon/NotesIcon";
+import CourseUpdate from "./components/Admin/CourseUpload/CourseUpdate";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/learning/:id" element={<Learning />} />
         <Route path="/notes" element={<Notes />} />
         <Route path="/admin-upload" element={<CourseUpload />} />
+        <Route path="/admin-upload/:id" element={<CourseUpdate />} />
       </Routes>
       <NotesIcon />
     </>

@@ -19,6 +19,35 @@
   display: none;
 }
 
+.admin-btns {
+  display: flex;
+  gap: 1rem;
+  float: right;
+  /* position: sticky;
+  top: 2rem;
+  right: 2rem; */
+}
+
+.chapter-edit-btn,
+.chapter-delete-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background-color: var(--tropical-indigo);
+  height: 4rem;
+  width: 4rem;
+  cursor: pointer;
+}
+
+.chapter-edit-btn img {
+  width: 2.4rem;
+}
+
+.chapter-delete-btn img {
+  width: 1.8rem;
+}
+
 @media (max-width: 650px) {
   .learning-main {
     padding: 7rem;

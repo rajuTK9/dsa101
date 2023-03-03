@@ -11,14 +11,14 @@ export default function CourseUpload() {
     topic: "Basics of C++",
     chapter: "",
     content: "",
-    // quiz: [{}, {}, {}, {}, {}],
-    // quizDemo: [
-    //   {
-    //     question: "Question 1",
-    //     options: ["option 1", "option 2", "option 3", "option 4"],
-    //     correct: "1",
-    //   },
-    // ],
+    quiz: [
+      { question: "", options: ["", "", "", ""], correct: "" },
+      { question: "", options: ["", "", "", ""], correct: "" },
+      { question: "", options: ["", "", "", ""], correct: "" },
+      { question: "", options: ["", "", "", ""], correct: "" },
+      { question: "", options: ["", "", "", ""], correct: "" },
+    ],
+    chapterId: -1,
   };
   const [formData, setFormData] = useState(initialValues);
 
@@ -29,27 +29,7 @@ export default function CourseUpload() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
-    const {
-      category,
-      chapter,
-      content,
-      correct1,
-      correct2,
-      correct3,
-      correct4,
-      correct5,
-      options1,
-      options2,
-      options3,
-      options4,
-      options5,
-      question1,
-      question2,
-      question3,
-      question4,
-      question5,
-      topic,
-    } = formData;
+    const { category, chapter, content, quiz, topic, chapterId } = formData;
     const res = await fetch("/admin-upload", {
       method: "POST",
       headers: {
@@ -59,34 +39,20 @@ export default function CourseUpload() {
         category,
         chapter,
         content,
-        correct1,
-        correct2,
-        correct3,
-        correct4,
-        correct5,
-        options1,
-        options2,
-        options3,
-        options4,
-        options5,
-        question1,
-        question2,
-        question3,
-        question4,
-        question5,
+        quiz,
         topic,
+        chapterId,
       }),
     });
     const data = await res.json();
-
     if (data.status === 422 || data.status === 500) {
       alert(data.error);
     } else {
       alert("Chapter added scuccessfully!");
     }
-
     console.log(data);
   };
+
   return (
     <div className="course-upload-container">
       <h1 className="heading">Upload the course</h1>
@@ -100,8 +66,8 @@ export default function CourseUpload() {
               onChange={onChangeHandler}
             >
               <option value={"Basics"}>Basics</option>
-              <option value={"Starter"}>Starter</option>
-              <option value={"Advance"}>Advance</option>
+              <option value={"DSA Starter"}>DSA Starter</option>
+              <option value={"Adv. DSA"}>Adv. DSA</option>
             </select>
           </div>
           <div className="form-item">
@@ -121,15 +87,27 @@ export default function CourseUpload() {
             </select>
           </div>
         </div>
-        <div className="form-item">
-          <label htmlFor="course-chapter">Chapter</label>
-          <input
-            type="text"
-            name="chapter"
-            placeholder="Chapter"
-            onChange={onChangeHandler}
-            id="course-chapter"
-          />
+        <div className="form-item-wrapper chapter">
+          <div className="form-item">
+            <label htmlFor="course-chapter">ID</label>
+            <input
+              type="number"
+              name="chapterId"
+              placeholder="Chapter ID"
+              onChange={onChangeHandler}
+              id="course-chapterId"
+            />
+          </div>
+          <div className="form-item">
+            <label htmlFor="course-chapter">Chapter</label>
+            <input
+              type="text"
+              name="chapter"
+              placeholder="Chapter"
+              onChange={onChangeHandler}
+              id="course-chapter"
+            />
+          </div>
         </div>
         <div className="form-item">
           <label>Content</label>
@@ -149,31 +127,31 @@ export default function CourseUpload() {
             formData={formData}
             setFormData={setFormData}
             id={1}
-            onChangeHandler={onChangeHandler}
+            quiz={formData.quiz}
           />
           <FormQuiz
             formData={formData}
             setFormData={setFormData}
             id={2}
-            onChangeHandler={onChangeHandler}
+            quiz={formData.quiz}
           />
           <FormQuiz
             formData={formData}
             setFormData={setFormData}
             id={3}
-            onChangeHandler={onChangeHandler}
+            quiz={formData.quiz}
           />
           <FormQuiz
             formData={formData}
             setFormData={setFormData}
             id={4}
-            onChangeHandler={onChangeHandler}
+            quiz={formData.quiz}
           />
           <FormQuiz
             formData={formData}
             setFormData={setFormData}
             id={5}
-            onChangeHandler={onChangeHandler}
+            quiz={formData.quiz}
           />
         </div>
 
