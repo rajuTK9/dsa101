@@ -42,7 +42,7 @@ export default function Quiz(props) {
         console.log(data.message);
       }
     } catch (err) {
-      console.log("An erros occured: " + err);
+      console.log("An error occured: " + err);
     }
   };
 
@@ -90,7 +90,6 @@ export default function Quiz(props) {
       setIsSubmitted(true);
       user.completed_chapters.push(courseData.chapter);
       user.completed_chapters = removeDuplicates(user.completed_chapters);
-      console.log(user);
       markAsDone();
       setQuizRendering("result");
     }

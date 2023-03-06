@@ -9,7 +9,6 @@ export default function EditNotes() {
   const [notes, setNotes] = useState();
   useEffect(() => {
     if (user) setNotes(user.notes);
-    console.log(user);
   }, [user]);
 
   const editor = useRef(null);
@@ -35,7 +34,7 @@ export default function EditNotes() {
         alert(data.message);
       }
     } catch (err) {
-      console.log("An erros occured: " + err);
+      console.log("An error occured: " + err);
     }
   };
 

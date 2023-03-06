@@ -16,8 +16,6 @@ export default function IndexPage() {
 
   const courseTopics = GetCourse(`/categories/${params.id}`);
   const user = GetUser();
-  console.log(params.id);
-  if (courseTopics) console.log(courseTopics);
   if (courseTopics)
     courseTopics.forEach((e) => {
       topics.push(e.topic);
@@ -28,7 +26,6 @@ export default function IndexPage() {
   }
 
   topics = removeDuplicates(topics);
-  console.log(topics);
 
   return (
     <div key={params.id} className="index-container">

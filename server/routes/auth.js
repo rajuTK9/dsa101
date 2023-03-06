@@ -27,7 +27,6 @@ router.get("/get-user/:id", async (req, res) => {
 });
 
 router.get("/categories/:id", async (req, res) => {
-  console.log(req.params.id);
   try {
     const courseData = await Course.find({ category: req.params.id });
     res.json(courseData);
@@ -37,7 +36,6 @@ router.get("/categories/:id", async (req, res) => {
 });
 
 router.get("/topics/:id", async (req, res) => {
-  console.log(req.params.id);
   try {
     const courseData = await Course.find({ topic: req.params.id });
     res.json(courseData);
@@ -47,7 +45,6 @@ router.get("/topics/:id", async (req, res) => {
 });
 
 router.get("/chapters/:id", async (req, res) => {
-  console.log(req.params.id);
   try {
     const courseData = await Course.findOne({ chapter: req.params.id });
     res.json(courseData);

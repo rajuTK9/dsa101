@@ -15,8 +15,8 @@ import Protected from "./Protected";
 function App() {
   return (
     <Auth0Provider
-      domain="dev-ynlvngvzhos0c4m0.us.auth0.com"
-      clientId="EX3BsaTmmEAZyZ8MtKObZhncV6fNkHqZ"
+      domain={process.env.REACT_APP_DOMAIN}
+      clientId={process.env.REACT_APP_CLIENT_ID}
       authorizationParams={{
         redirect_uri: window.location.origin,
       }}

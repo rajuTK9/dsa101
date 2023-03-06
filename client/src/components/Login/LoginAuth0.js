@@ -28,7 +28,7 @@ export default function LoginAuth0() {
         console.log(data.message);
       }
     } catch (err) {
-      console.log("An erros occured: " + err);
+      console.log("An error occured: " + err);
     }
   };
 

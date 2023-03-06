@@ -28,7 +28,6 @@ export default function CourseUpload() {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
     const { category, chapter, content, quiz, topic, chapterId } = formData;
     const res = await fetch("/admin-upload", {
       method: "POST",
@@ -50,7 +49,6 @@ export default function CourseUpload() {
     } else {
       alert("Chapter added scuccessfully!");
     }
-    console.log(data);
   };
 
   return (
