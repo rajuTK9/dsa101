@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Login.css";
+import Loading from "../Loading/Loading";
 
 export default function LoginAuth0() {
   const { loginWithRedirect, user, isAuthenticated, isLoading, logout } =
@@ -45,7 +46,10 @@ export default function LoginAuth0() {
       <span className="login-btn-txt">Hi, {user.name.split(" ")[0]}</span>
     </button>
   ) : isLoading ? (
-    <div>Loading ...</div>
+    <>
+      <div>Loading ...</div>
+      <Loading />
+    </>
   ) : (
     <button
       className="btn btn-primary google-login-btn"

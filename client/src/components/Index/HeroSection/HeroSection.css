@@ -1,0 +1,81 @@
+.index-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 3rem 8rem 0.2rem 8rem;
+  min-height: 30rem;
+  background: var(--periwinkle);
+  border-bottom: 10px solid #f1f1f1;
+}
+
+.index-hero .hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.index-hero .hero-title {
+  font-family: "Source Code Pro";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 4.2rem;
+  line-height: 5.3rem;
+
+  color: var(--black);
+}
+
+.index-hero .hero-description {
+  font-family: "Source Code Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.4rem;
+  line-height: 3rem;
+
+  color: var(--dark-black);
+}
+
+.index-hero .hero-img {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.index-hero .hero-img img {
+  width: 37.9rem;
+}
+
+@media (max-width: 750px) {
+  .index-hero {
+    display: flex;
+    gap: 5rem;
+    flex-direction: column-reverse;
+    padding: 5rem 8rem;
+  }
+
+  .index-hero .hero-text {
+    margin: auto;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .index-hero {
+    padding: 5rem 3rem;
+  }
+
+  .index-hero .hero-text {
+    text-align: center;
+  }
+
+  .index-hero .hero-title {
+    font-size: 3.2rem;
+  }
+
+  .index-hero .hero-description {
+    font-size: 1.8rem;
+  }
+
+  .index-hero .hero-img img {
+    width: 32rem;
+  }
+}

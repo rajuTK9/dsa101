@@ -1,0 +1,30 @@
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.welcome-img {
+  width: 30rem;
+}
+
+.welcome-txt {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 2.7rem;
+
+  color: var(--black);
+}
+
+@media (max-width: 320px) {
+  .welcome-img {
+    width: 20rem;
+  }
+
+  .welcome-txt {
+    font-size: 1.4rem;
+  }
+}
