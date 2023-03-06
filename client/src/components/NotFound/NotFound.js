@@ -1,5 +1,6 @@
 import React from "react";
 import "./NotFound.css";
+import { Link } from "react-router-dom";
 
 export default function NotFound() {
   return (
@@ -9,7 +10,9 @@ export default function NotFound() {
         src="/assets/illustrations/404-error.svg"
         alt=""
       />
-      <button className="btn btn-primary go-home-btn">Go to home</button>
+      <Link to={"/"} className="btn btn-primary go-home-btn">
+        Go to home
+      </Link>
     </div>
   );
 }
