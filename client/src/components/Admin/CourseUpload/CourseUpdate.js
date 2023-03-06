@@ -43,7 +43,7 @@ export default function CourseUpdate() {
         alert(data.message);
       }
     } catch (err) {
-      console.log("An erros occured: " + err);
+      console.log("An error occured: " + err);
     }
   };
 

@@ -5,10 +5,9 @@ import "./Login.css";
 export default function LoginAuth0() {
   const { loginWithRedirect, user, isAuthenticated, isLoading, logout } =
     useAuth0();
-
   const sendUserData = async () => {
     try {
-      const { name } = user;
+      const { name, sub } = user;
       const res = await fetch("/login", {
         method: "POST",
         headers: {
@@ -16,6 +15,9 @@ export default function LoginAuth0() {
         },
         body: JSON.stringify({
           name,
+          notes: `<p>Hi ${name}. Write your first note here...!</p>`,
+          uid: sub,
+          completed_chapters: [],
         }),
       });
       const data = await res.json();
@@ -25,10 +27,8 @@ export default function LoginAuth0() {
       } else {
         console.log(data.message);
       }
-
-      console.log(data);
     } catch (err) {
-      console.log("An erros occured: " + err);
+      console.log("An error occured: " + err);
     }
   };
 

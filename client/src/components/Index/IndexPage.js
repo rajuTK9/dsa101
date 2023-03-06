@@ -5,6 +5,7 @@ import "./IndexPage.css";
 import { useParams } from "react-router";
 import NavItem from "./NavItem/NavItem";
 import GetCourse from "../../data/GetCourse";
+import GetUser from "../../data/GetUser";
 
 export default function IndexPage() {
   const [navbarCollapse, setNavbarCollapse] = useState(false);
@@ -14,8 +15,7 @@ export default function IndexPage() {
   let topics = [];
 
   const courseTopics = GetCourse(`/categories/${params.id}`);
-  console.log(params.id);
-  if (courseTopics) console.log(courseTopics);
+  const user = GetUser();
   if (courseTopics)
     courseTopics.forEach((e) => {
       topics.push(e.topic);
@@ -26,7 +26,6 @@ export default function IndexPage() {
   }
 
   topics = removeDuplicates(topics);
-  console.log(topics);
 
   return (
     <div key={params.id} className="index-container">
@@ -35,20 +34,6 @@ export default function IndexPage() {
         <div
           className={navbarCollapse ? "index-navbar expand" : "index-navbar"}
         >
-          {/* <NavItem title="Basics of C++" isActive="true" />
-          <NavItem title="Strings" />
-          <NavItem title="Arrays" />
-          <NavItem title="Loops" />
-          <NavItem title="Vector" />
-          <NavItem title="Stack" />
-          <NavItem title="Linked List" />
-          <NavItem title="Stacks" />
-          <NavItem title="Queue" />
-          <NavItem title="Heap" />
-          <NavItem title="Graphs" />
-          <NavItem title="Trees" />
-          <NavItem title="Hashmaps" />
-          <NavItem title="D.P." /> */}
           {topics &&
             topics.map((e, i) => {
               if (courseData && courseData[0].topic === e)
@@ -101,7 +86,11 @@ export default function IndexPage() {
                     <Chapter
                       title={e.chapter}
                       description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
-                      status="l-done"
+                      status={
+                        user.completed_chapters.includes(e.chapter)
+                          ? "l-done"
+                          : "l-pending"
+                      }
                       key={i}
                     />
                   );
@@ -109,51 +98,15 @@ export default function IndexPage() {
                   <Chapter
                     title={e.chapter}
                     description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
-                    status="done"
+                    status={
+                      user.completed_chapters.includes(e.chapter)
+                        ? "done"
+                        : "pending"
+                    }
                     key={i}
                   />
                 );
               })}
-            {/* <Chapter
-              title="Chapter 1: Lorem ipsum dolor sit amet consectetur."
-              description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
-              status="done"
-            />
-            <Chapter
-              title="Chapter 1: Lorem ipsum dolor sit amet consectetur."
-              description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
-              status="done"
-            />
-            <Chapter
-              title="Chapter 1: Lorem ipsum dolor sit amet consectetur."
-              description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
-              status="current"
-            />
-            <Chapter
-              title="Chapter 1: Lorem ipsum dolor sit amet consectetur."
-              description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
-              status="pending"
-            />
-            <Chapter
-              title="Chapter 1: Lorem ipsum dolor sit amet consectetur."
-              description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
-              status="pending"
-            />
-            <Chapter
-              title="Chapter 1: Lorem ipsum dolor sit amet consectetur."
-              description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
-              status="pending"
-            />
-            <Chapter
-              title="Chapter 1: Lorem ipsum dolor sit amet consectetur."
-              description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
-              status="pending"
-            />
-            <Chapter
-              title="Chapter 1: Lorem ipsum dolor sit amet consectetur."
-              description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
-              status="l-pending"
-            /> */}
           </div>
         </div>
       </div>

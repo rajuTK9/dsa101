@@ -19,7 +19,6 @@ export default function FormQuiz(props) {
 
   function handleOptions(e) {
     options[e.target.id] = e.target.value;
-    console.log(options);
     content[id - 1] = { ...content[id - 1], options: options };
     props.setFormData({
       ...props.formData,
@@ -82,6 +81,8 @@ export default function FormQuiz(props) {
           <input
             name="correct"
             type="number"
+            max="3"
+            min="0"
             placeholder="0"
             value={quiz[id - 1].correct}
             onChange={onChangeHandle}

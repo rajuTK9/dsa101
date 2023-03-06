@@ -9,10 +9,20 @@ import Notes from "./components/Notes/Notes";
 import CourseUpload from "./components/Admin/CourseUpload/CourseUpload";
 import NotesIcon from "./components/NotesIcon/NotesIcon";
 import CourseUpdate from "./components/Admin/CourseUpload/CourseUpdate";
+import { Auth0Provider } from "@auth0/auth0-react";
+import Protected from "./Protected";
 
 function App() {
   return (
-    <>
+    <Auth0Provider
+      domain={process.env.REACT_APP_DOMAIN}
+      clientId={process.env.REACT_APP_CLIENT_ID}
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+      }}
+      useRefreshTokens={true}
+      cacheLocation="localstorage"
+    >
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -20,11 +30,13 @@ function App() {
         <Route path="/:id" element={<Index />} />
         <Route path="/learning/:id" element={<Learning />} />
         <Route path="/notes" element={<Notes />} />
-        <Route path="/admin-upload" element={<CourseUpload />} />
-        <Route path="/admin-upload/:id" element={<CourseUpdate />} />
+        <Route element={<Protected />}>
+          <Route path="/admin-upload" element={<CourseUpload />} />
+          <Route path="/admin-upload/:id" element={<CourseUpdate />} />
+        </Route>
       </Routes>
       <NotesIcon />
-    </>
+    </Auth0Provider>
   );
 }
 

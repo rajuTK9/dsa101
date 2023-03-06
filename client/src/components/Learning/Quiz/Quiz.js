@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import "./Quiz.css";
 import Option from "./Option/Option";
+import GetUser from "../../../data/GetUser";
 
 export default function Quiz(props) {
   const [count, setCount] = useState(0);
   const [selectedId, setSelectedId] = useState(-1);
   const [warning, setWarning] = useState("");
+
+  const user = GetUser();
 
   const {
     setQuizRendering,
@@ -18,6 +21,30 @@ export default function Quiz(props) {
     isSubmitted,
     courseData,
   } = props;
+
+  const markAsDone = async () => {
+    try {
+      const res = await fetch("/update-chapter", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          uid: user.uid,
+          completed_chapters: user.completed_chapters,
+        }),
+      });
+      const data = await res.json();
+      if (data.status === 422 || data.status === 500) {
+        alert(data.error);
+        return data.error;
+      } else {
+        console.log(data.message);
+      }
+    } catch (err) {
+      console.log("An error occured: " + err);
+    }
+  };
 
   function remove_active() {
     document.querySelectorAll(".option").forEach((el) => {
@@ -43,6 +70,10 @@ export default function Quiz(props) {
   //   if (count > 0) setCount((count) => (count -= 1));
   // }
 
+  function removeDuplicates(arr) {
+    return arr.filter((item, index) => arr.indexOf(item) === index);
+  }
+
   function next() {
     if (selectedId === -1 && !isSubmitted) {
       setWarning("Please select an option to go next");
@@ -57,9 +88,13 @@ export default function Quiz(props) {
     if (count < 4) setCount((count) => (count += 1));
     else {
       setIsSubmitted(true);
+      user.completed_chapters.push(courseData.chapter);
+      user.completed_chapters = removeDuplicates(user.completed_chapters);
+      markAsDone();
       setQuizRendering("result");
     }
   }
+
   return (
     <div className="quiz-container">
       <div className="quiz-count">

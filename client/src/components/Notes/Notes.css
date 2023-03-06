@@ -5,6 +5,28 @@
   gap: 2rem;
 }
 
+.save-btn-container {
+  position: sticky;
+  top: 2rem;
+}
+
+.save-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background-color: var(--tropical-indigo);
+  height: 4rem;
+  width: 4rem;
+  cursor: pointer;
+
+  float: right;
+}
+
+.save-btn img {
+  width: 2.4rem;
+}
+
 .go-back-btn {
   display: flex;
   gap: 1.5rem;
@@ -12,6 +34,7 @@
   border-radius: 1rem;
   width: 15rem;
   cursor: pointer;
+  position: absolute;
 }
 
 .go-back-btn img {
