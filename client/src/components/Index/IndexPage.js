@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CardSM from "./CardSM/CardSM";
 import Chapter from "./Chapter/Chapter";
 import "./IndexPage.css";
@@ -6,13 +6,30 @@ import { useParams } from "react-router";
 import NavItem from "./NavItem/NavItem";
 import GetCourse from "../../data/GetCourse";
 import GetUser from "../../data/GetUser";
+import HeroSection from "./HeroSection/HeroSection";
+import Welcome from "./Welcome/Welcome";
+import Loading from "../Loading/Loading";
+import { useNavigate } from "react-router";
 
 export default function IndexPage() {
   const [navbarCollapse, setNavbarCollapse] = useState(false);
   const [courseData, setCourseData] = useState();
   const params = useParams();
+  const navigate = useNavigate();
 
   let topics = [];
+
+  useEffect(() => {
+    if (
+      !(
+        params.id === "Basics" ||
+        params.id === "DSA Starter" ||
+        params.id === "Adv. DSA"
+      )
+    ) {
+      navigate("/404");
+    }
+  }, [navigate, params.id]);
 
   const courseTopics = GetCourse(`/categories/${params.id}`);
   const user = GetUser();
@@ -29,12 +46,12 @@ export default function IndexPage() {
 
   return (
     <div key={params.id} className="index-container">
-      <div className="index-hero"></div>
+      <HeroSection />
       <div className="index-main">
         <div
           className={navbarCollapse ? "index-navbar expand" : "index-navbar"}
         >
-          {topics &&
+          {topics ? (
             topics.map((e, i) => {
               if (courseData && courseData[0].topic === e)
                 return (
@@ -48,7 +65,10 @@ export default function IndexPage() {
               return (
                 <NavItem title={e} key={i} setCourseData={setCourseData} />
               );
-            })}
+            })
+          ) : (
+            <Loading />
+          )}
           <div
             className="navbar-collapse-icon"
             onClick={() => setNavbarCollapse(!navbarCollapse)}
@@ -79,7 +99,7 @@ export default function IndexPage() {
             />
           </div>
           <div className="index-chapters-container">
-            {courseData &&
+            {courseData ? (
               courseData.map((e, i) => {
                 if (i === courseData.length - 1)
                   return (
@@ -87,7 +107,7 @@ export default function IndexPage() {
                       title={e.chapter}
                       description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
                       status={
-                        user.completed_chapters.includes(e.chapter)
+                        user && user.completed_chapters.includes(e.chapter)
                           ? "l-done"
                           : "l-pending"
                       }
@@ -99,14 +119,17 @@ export default function IndexPage() {
                     title={e.chapter}
                     description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
                     status={
-                      user.completed_chapters.includes(e.chapter)
+                      user && user.completed_chapters.includes(e.chapter)
                         ? "done"
                         : "pending"
                     }
                     key={i}
                   />
                 );
-              })}
+              })
+            ) : (
+              <Welcome />
+            )}
           </div>
         </div>
       </div>

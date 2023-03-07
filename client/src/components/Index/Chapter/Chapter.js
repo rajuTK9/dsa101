@@ -7,10 +7,12 @@ export default function Chapter(props) {
     <Link to={`/learning/${props.title}`}>
       <div className="chapter-container">
         <div className="chapter-progress">
-          <img
-            src={`./assets/icons/progress-icons/${props.status}.svg`}
-            alt=""
-          />
+          {props.status && (
+            <img
+              src={`./assets/icons/progress-icons/${props.status}.svg`}
+              alt=""
+            />
+          )}
         </div>
         <div className="chapter-main">
           <div className="chapter-content">

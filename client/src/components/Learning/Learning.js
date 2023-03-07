@@ -10,6 +10,7 @@ import GetCourse from "../../data/GetCourse";
 import GetUser from "../../data/GetUser";
 import { useParams, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import Loading from "../Loading/Loading";
 
 export default function Learning() {
   const [quizRendering, setQuizRendering] = useState("");
@@ -52,7 +53,7 @@ export default function Learning() {
   return (
     <>
       <div className="learning-container">
-        {courseData && (
+        {courseData ? (
           <div className="learning-main">
             <div className="learning-index-container">
               <LearningIndex chapterIndex={chapterIndex} />
@@ -122,6 +123,8 @@ export default function Learning() {
               />
             </div>
           </div>
+        ) : (
+          <Loading />
         )}
       </div>
     </>

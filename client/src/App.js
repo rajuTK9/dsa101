@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
 import Index from "./components/Index/IndexPage";
 import Learning from "./components/Learning/Learning";
-import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
 import Notes from "./components/Notes/Notes";
 import CourseUpload from "./components/Admin/CourseUpload/CourseUpload";
@@ -11,6 +10,8 @@ import NotesIcon from "./components/NotesIcon/NotesIcon";
 import CourseUpdate from "./components/Admin/CourseUpload/CourseUpdate";
 import { Auth0Provider } from "@auth0/auth0-react";
 import Protected from "./Protected";
+import NotFound from "./components/NotFound/NotFound";
+import Loading from "./components/Loading/Loading";
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/loading" element={<Loading />} />
+        <Route path="/404" element={<NotFound />} />
         <Route path="/:id" element={<Index />} />
         <Route path="/learning/:id" element={<Learning />} />
         <Route path="/notes" element={<Notes />} />
@@ -34,6 +36,7 @@ function App() {
           <Route path="/admin-upload" element={<CourseUpload />} />
           <Route path="/admin-upload/:id" element={<CourseUpdate />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <NotesIcon />
     </Auth0Provider>
