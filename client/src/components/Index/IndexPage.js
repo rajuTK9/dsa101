@@ -51,7 +51,7 @@ export default function IndexPage() {
         <div
           className={navbarCollapse ? "index-navbar expand" : "index-navbar"}
         >
-          {topics ? (
+          {topics.length > 0 ? (
             topics.map((e, i) => {
               if (courseData && courseData[0].topic === e)
                 return (

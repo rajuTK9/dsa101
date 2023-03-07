@@ -19,11 +19,35 @@
   --parrot-green: #57dd94;
 }
 
+[data-theme="dark"] {
+  --milky-grey: #36393e;
+  --periwinkle: #7282fe;
+  --chilly-red: #fe7575;
+  --white: #fff;
+  --selective-yellow: #feba00;
+  --tropical-indigo: #7a45ff;
+  --oxford-blue: #d3e3ff;
+  --v-purple: #ada2ff;
+  --v-slate-blue: #c0deff;
+  --v-slate-pink: #ffe5f1;
+  --v-slate-yellow: #fff8e1;
+  --milky-white: rgb(20, 20, 20);
+  --dark-black: #454546;
+  --black: #fff;
+  --parrot-green: #57dd94;
+}
+
+[data-theme="dark"] .learning-btn-subtitle {
+  color: #eaeaea !important;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-size: inherit;
+  /* transition: color 0.5s ease-in-out;
+  transition: background 0.5s ease-in-out; */
 }
 
 html {

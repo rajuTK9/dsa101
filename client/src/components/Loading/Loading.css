@@ -2,12 +2,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   position: absolute;
   left: 50%;
   top: 50%;
+  gap: 2rem;
   transform: translate(-50%, -50%);
 }
 
 .loading-container img {
   width: 10rem;
+}
+
+.loading-title {
+  font-family: "Poppins";
+  font-weight: 500;
+  font-size: 1.2rem;
+  line-height: 2.7rem;
+  color: var(--black);
 }
