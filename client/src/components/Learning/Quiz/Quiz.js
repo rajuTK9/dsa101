@@ -24,16 +24,19 @@ export default function Quiz(props) {
 
   const markAsDone = async () => {
     try {
-      const res = await fetch("/update-chapter", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          uid: user.uid,
-          completed_chapters: user.completed_chapters,
-        }),
-      });
+      const res = await fetch(
+        process.env.REACT_APP_SERVER_URL + "/update-chapter",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            uid: user.uid,
+            completed_chapters: user.completed_chapters,
+          }),
+        }
+      );
       const data = await res.json();
       if (data.status === 422 || data.status === 500) {
         alert(data.error);

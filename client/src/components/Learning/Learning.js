@@ -28,9 +28,12 @@ export default function Learning() {
 
   const deleteChapter = async () => {
     try {
-      const res = await fetch(`/delete/${courseData._id}`, {
-        method: "DELETE",
-      });
+      const res = await fetch(
+        `${process.env.REACT_APP_SERVER_URL}/delete/${courseData._id}`,
+        {
+          method: "DELETE",
+        }
+      );
       const data = await res.json();
       if (data.status === 422 || data.status === 500) {
         alert(data.error);

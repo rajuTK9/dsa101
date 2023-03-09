@@ -78,8 +78,26 @@ router.get("/chapterId/:category/:id", async (req, res) => {
 });
 
 router.post("/admin-upload", async (req, res) => {
-  const { category, chapter, content, quiz, topic, chapterId } = req.body;
-  if (!(category && topic && chapter && content && quiz && chapterId)) {
+  const {
+    category,
+    chapter,
+    content,
+    quiz,
+    topic,
+    chapterId,
+    chapter_description,
+  } = req.body;
+  if (
+    !(
+      category &&
+      topic &&
+      chapter &&
+      content &&
+      quiz &&
+      chapterId &&
+      chapter_description
+    )
+  ) {
     return res
       .status(422)
       .json({ error: "Please fill all the required fields", status: 422 });
@@ -93,6 +111,7 @@ router.post("/admin-upload", async (req, res) => {
       topic,
       quiz,
       chapterId,
+      chapter_description,
     });
 
     await data.save();
@@ -117,7 +136,7 @@ router.post("/login", async (req, res) => {
       uid: uid,
     });
     if (user) {
-      return res.status(201).json([{ message: "User already exist." }]);
+      return res.status(201).json({ message: "User already exist." });
     }
     const data = new User({ name, notes, uid, completed_chapters });
     await data.save();
@@ -160,7 +179,16 @@ router.put("/update-chapter", async (req, res) => {
 });
 
 router.put("/update", async (req, res) => {
-  const { id, category, chapter, content, quiz, topic, chapterId } = req.body;
+  const {
+    id,
+    category,
+    chapter,
+    content,
+    quiz,
+    topic,
+    chapterId,
+    chapter_description,
+  } = req.body;
   try {
     const data = await Course.findById(id);
     data.category = category;
@@ -169,6 +197,7 @@ router.put("/update", async (req, res) => {
     data.quiz = quiz;
     data.topic = topic;
     data.chapterId = chapterId;
+    data.chapter_description = chapter_description;
     data.save();
     res
       .status(201)

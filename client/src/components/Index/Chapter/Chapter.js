@@ -19,9 +19,9 @@ export default function Chapter(props) {
             <h3 className="chapter-title">{props.title}</h3>
             <p className="chapter-description">{props.description}</p>
           </div>
-          <div className="chapter-arrow">
-            <img src="./assets/icons/arrow-right.svg" alt="" />
-          </div>
+        </div>
+        <div className="chapter-arrow">
+          <img src="./assets/icons/arrow-right.svg" alt="" />
         </div>
       </div>
     </Link>

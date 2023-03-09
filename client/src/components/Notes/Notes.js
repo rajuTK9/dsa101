@@ -16,16 +16,19 @@ export default function EditNotes() {
 
   const saveNotes = async () => {
     try {
-      const res = await fetch("/save-notes", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          uid: user.uid,
-          notes,
-        }),
-      });
+      const res = await fetch(
+        process.env.REACT_APP_SERVER_URL + "/save-notes",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            uid: user.uid,
+            notes,
+          }),
+        }
+      );
       const data = await res.json();
       if (data.status === 422 || data.status === 500) {
         alert(data.error);

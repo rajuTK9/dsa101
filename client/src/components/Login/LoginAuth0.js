@@ -9,7 +9,7 @@ export default function LoginAuth0() {
   const sendUserData = async () => {
     try {
       const { name, sub } = user;
-      const res = await fetch("/login", {
+      const res = await fetch(process.env.REACT_APP_SERVER_URL + "/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

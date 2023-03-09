@@ -10,6 +10,7 @@ export default function CourseUpload() {
     category: "Basics",
     topic: "Basics of C++",
     chapter: "",
+    chapter_description: "",
     content: "",
     quiz: [
       { question: "", options: ["", "", "", ""], correct: "" },
@@ -28,21 +29,33 @@ export default function CourseUpload() {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { category, chapter, content, quiz, topic, chapterId } = formData;
-    const res = await fetch("/admin-upload", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        category,
-        chapter,
-        content,
-        quiz,
-        topic,
-        chapterId,
-      }),
-    });
+    const {
+      category,
+      chapter,
+      content,
+      quiz,
+      topic,
+      chapterId,
+      chapter_description,
+    } = formData;
+    const res = await fetch(
+      process.env.REACT_APP_SERVER_URL + "/admin-upload",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          category,
+          chapter,
+          content,
+          quiz,
+          topic,
+          chapterId,
+          chapter_description,
+        }),
+      }
+    );
     const data = await res.json();
     if (data.status === 422 || data.status === 500) {
       alert(data.error);
@@ -106,6 +119,16 @@ export default function CourseUpload() {
               id="course-chapter"
             />
           </div>
+        </div>
+        <div className="form-item">
+          <label htmlFor="course-chapter">Description</label>
+          <input
+            type="text"
+            name="chapter_description"
+            placeholder="Description"
+            onChange={onChangeHandler}
+            id="course-chapter-description"
+          />
         </div>
         <div className="form-item">
           <label>Content</label>

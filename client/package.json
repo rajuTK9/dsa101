@@ -2,7 +2,6 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://dsa101.onrender.com",
   "dependencies": {
     "@auth0/auth0-react": "^2.0.0",
     "@lexical/react": "^0.8.0",

@@ -105,7 +105,7 @@ export default function IndexPage() {
                   return (
                     <Chapter
                       title={e.chapter}
-                      description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
+                      description={e.chapter_description}
                       status={
                         user && user.completed_chapters.includes(e.chapter)
                           ? "l-done"
@@ -117,7 +117,7 @@ export default function IndexPage() {
                 return (
                   <Chapter
                     title={e.chapter}
-                    description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
+                    description={e.chapter_description}
                     status={
                       user && user.completed_chapters.includes(e.chapter)
                         ? "done"

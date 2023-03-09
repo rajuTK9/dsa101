@@ -25,6 +25,10 @@ const courseSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  chapter_description: {
+    type: String,
+    required: true,
+  },
 });
 
 const Course = mongoose.model("COURSE", courseSchema);
