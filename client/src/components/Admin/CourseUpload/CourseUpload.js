@@ -3,7 +3,7 @@ import JoditEditor from "jodit-react";
 import "./CourseUpload.css";
 import FormQuiz from "./FormQuiz/FormQuiz";
 export default function CourseUpload() {
-  // const [content, setContent] = useState("");
+  const [isSaved, setIsSaved] = useState(false);
   const editor = useRef(null);
 
   const initialValues = {
@@ -61,6 +61,21 @@ export default function CourseUpload() {
       alert(data.error);
     } else {
       alert("Chapter added scuccessfully!");
+      setIsSaved(true);
+    }
+  };
+
+  window.onbeforeunload = (e) => {
+    if (!isSaved) {
+      e.preventDefault();
+      return "";
+    }
+  };
+
+  window.close = (e) => {
+    if (!isSaved) {
+      e.preventDefault();
+      return "";
     }
   };
 

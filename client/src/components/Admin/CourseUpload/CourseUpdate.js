@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import GetCourse from "../../../data/GetCourse";
 
 export default function CourseUpdate() {
+  const [isSaved, setIsSaved] = useState(false);
   const params = useParams();
   const navigate = useNavigate();
 
@@ -50,6 +51,7 @@ export default function CourseUpdate() {
         return data.error;
       } else {
         alert(data.message);
+        setIsSaved(true);
       }
     } catch (err) {
       console.log("An error occured: " + err);
@@ -60,6 +62,20 @@ export default function CourseUpdate() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   }
+
+  window.onbeforeunload = (e) => {
+    if (!isSaved) {
+      e.preventDefault();
+      return "";
+    }
+  };
+
+  window.close = (e) => {
+    if (!isSaved) {
+      e.preventDefault();
+      return "";
+    }
+  };
 
   return (
     <div className="course-upload-container">

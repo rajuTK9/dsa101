@@ -7,6 +7,7 @@ import GetUser from "../../data/GetUser";
 export default function EditNotes() {
   const user = GetUser();
   const [notes, setNotes] = useState();
+  const [isChanged, setIsChanged] = useState(false);
   useEffect(() => {
     if (user) setNotes(user.notes);
   }, [user]);
@@ -35,9 +36,26 @@ export default function EditNotes() {
         return data.error;
       } else {
         alert(data.message);
+        setIsChanged(false);
       }
     } catch (err) {
       console.log("An error occured: " + err);
+    }
+  };
+
+  console.log(isChanged);
+
+  window.onbeforeunload = (e) => {
+    if (isChanged) {
+      e.preventDefault();
+      return "";
+    }
+  };
+
+  window.close = (e) => {
+    if (isChanged) {
+      e.preventDefault();
+      return "";
     }
   };
 
@@ -57,6 +75,7 @@ export default function EditNotes() {
           ref={editor}
           value={notes}
           onChange={(newText) => {
+            setIsChanged(true);
             setNotes(newText);
           }}
         />

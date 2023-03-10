@@ -14,7 +14,6 @@ export default function Content(props) {
     });
 
     if (headings.length < 1) setChapterIndex([]);
-    console.log("first");
   }, [setChapterIndex, data]);
 
   return (

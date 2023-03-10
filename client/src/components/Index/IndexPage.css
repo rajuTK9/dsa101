@@ -10,7 +10,7 @@
   padding: 0rem;
   width: 35rem;
   min-width: 200px;
-  /* position: relative; */
+  position: relative;
   left: 0;
 
   background: var(--milky-grey);
@@ -81,12 +81,12 @@
     display: block;
   }
 
-  .index-navbar.expand .navbar-collapse-icon {
-    left: 205px;
-  }
-
   .index-navbar.expand .navbar-collapse-icon img {
     filter: invert();
+  }
+
+  .index-navbar.expand .navbar-collapse-icon {
+    left: 205px;
   }
 
   .index-cards-container {
