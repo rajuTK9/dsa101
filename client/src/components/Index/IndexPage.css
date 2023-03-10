@@ -10,7 +10,7 @@
   padding: 0rem;
   width: 35rem;
   min-width: 200px;
-  position: relative;
+  /* position: relative; */
   left: 0;
 
   background: var(--milky-grey);
@@ -27,9 +27,11 @@
   cursor: pointer;
   padding: 1rem;
   border-radius: 1rem;
-  position: absolute;
-  top: 50%;
-  right: -30px;
+  position: fixed;
+  top: 70%;
+  /* right: -30px; */
+  left: 1rem;
+  transition: 0.5s;
 }
 
 .index-navbar.expand {
@@ -55,9 +57,15 @@
 
 .index-chapters-container {
   background-color: var(--milky-grey);
-  width: 70vw;
+  width: 68vw;
   border-radius: 2rem;
   padding: 4.5rem 3rem;
+}
+
+@media (max-width: 750px) {
+  .index-chapters-container {
+    width: auto;
+  }
 }
 
 @media (max-width: 600px) {
@@ -66,10 +74,15 @@
     width: 200px;
     z-index: 1;
     left: -200px;
+    min-height: 45vh;
   }
 
   .index-navbar .navbar-collapse-icon {
     display: block;
+  }
+
+  .index-navbar.expand .navbar-collapse-icon {
+    left: 205px;
   }
 
   .index-navbar.expand .navbar-collapse-icon img {
@@ -79,10 +92,12 @@
   .index-cards-container {
     justify-content: space-between;
     margin: 0;
+    justify-content: space-evenly;
   }
 
   .index-content {
     padding: 20px;
+    width: 100%;
   }
 
   .index-chapters-container {
