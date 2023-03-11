@@ -12,7 +12,9 @@ export default function Content(props) {
       setChapterIndex(chapters);
       e.setAttribute("id", e.innerText.split(" ").join(""));
     });
-  }, [setChapterIndex]);
+
+    if (headings.length < 1) setChapterIndex([]);
+  }, [setChapterIndex, data]);
 
   return (
     <>

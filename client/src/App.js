@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home/Home";
-import Index from "./components/Index/IndexPage";
+import IndexPage from "./components/Index/IndexPage";
 import Learning from "./components/Learning/Learning";
 import Navbar from "./components/Navbar/Navbar";
 import Notes from "./components/Notes/Notes";
@@ -29,7 +29,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/loading" element={<Loading />} />
         <Route path="/404" element={<NotFound />} />
-        <Route path="/:id" element={<Index />} />
+        <Route path="/:id" element={<IndexPage />} />
         <Route path="/learning/:id" element={<Learning />} />
         <Route path="/notes" element={<Notes />} />
         <Route element={<Protected />}>

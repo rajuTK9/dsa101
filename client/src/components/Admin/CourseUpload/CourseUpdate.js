@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 import GetCourse from "../../../data/GetCourse";
 
 export default function CourseUpdate() {
+  const [isSaved, setIsSaved] = useState(false);
   const params = useParams();
   const navigate = useNavigate();
 
@@ -17,9 +18,17 @@ export default function CourseUpdate() {
 
   const updateChapter = async (e) => {
     e.preventDefault();
-    const { category, chapter, content, quiz, topic, chapterId } = formData;
+    const {
+      category,
+      chapter,
+      content,
+      quiz,
+      topic,
+      chapterId,
+      chapter_description,
+    } = formData;
     try {
-      const res = await fetch("/update", {
+      const res = await fetch(process.env.REACT_APP_SERVER_URL + "/update", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -32,6 +41,7 @@ export default function CourseUpdate() {
           quiz,
           topic,
           chapterId,
+          chapter_description,
         }),
       });
       const data = await res.json();
@@ -41,6 +51,7 @@ export default function CourseUpdate() {
         return data.error;
       } else {
         alert(data.message);
+        setIsSaved(true);
       }
     } catch (err) {
       console.log("An error occured: " + err);
@@ -51,6 +62,20 @@ export default function CourseUpdate() {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   }
+
+  window.onbeforeunload = (e) => {
+    if (!isSaved) {
+      e.preventDefault();
+      return "";
+    }
+  };
+
+  window.close = (e) => {
+    if (!isSaved) {
+      e.preventDefault();
+      return "";
+    }
+  };
 
   return (
     <div className="course-upload-container">
@@ -116,6 +141,16 @@ export default function CourseUpdate() {
                 id="course-chapter"
               />
             </div>
+          </div>
+          <div className="form-item">
+            <label htmlFor="course-chapter">Description</label>
+            <input
+              type="text"
+              name="chapter_description"
+              placeholder="Description"
+              onChange={onChangeHandler}
+              id="course-chapter-description"
+            />
           </div>
           <div className="form-item">
             <label>Content</label>

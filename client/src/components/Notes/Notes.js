@@ -7,6 +7,7 @@ import GetUser from "../../data/GetUser";
 export default function EditNotes() {
   const user = GetUser();
   const [notes, setNotes] = useState();
+  const [isChanged, setIsChanged] = useState(false);
   useEffect(() => {
     if (user) setNotes(user.notes);
   }, [user]);
@@ -16,25 +17,45 @@ export default function EditNotes() {
 
   const saveNotes = async () => {
     try {
-      const res = await fetch("/save-notes", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          uid: user.uid,
-          notes,
-        }),
-      });
+      const res = await fetch(
+        process.env.REACT_APP_SERVER_URL + "/save-notes",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            uid: user.uid,
+            notes,
+          }),
+        }
+      );
       const data = await res.json();
       if (data.status === 422 || data.status === 500) {
         alert(data.error);
         return data.error;
       } else {
         alert(data.message);
+        setIsChanged(false);
       }
     } catch (err) {
       console.log("An error occured: " + err);
+    }
+  };
+
+  console.log(isChanged);
+
+  window.onbeforeunload = (e) => {
+    if (isChanged) {
+      e.preventDefault();
+      return "";
+    }
+  };
+
+  window.close = (e) => {
+    if (isChanged) {
+      e.preventDefault();
+      return "";
     }
   };
 
@@ -54,6 +75,7 @@ export default function EditNotes() {
           ref={editor}
           value={notes}
           onChange={(newText) => {
+            setIsChanged(true);
             setNotes(newText);
           }}
         />

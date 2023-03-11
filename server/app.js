@@ -1,6 +1,9 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const app = express();
+const cors = require("cors");
+
+app.use(cors());
 // Setting up DotEnv
 dotenv.config({ path: "./.env" });
 // Establishing a connection to DB

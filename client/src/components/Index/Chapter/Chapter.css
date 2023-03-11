@@ -3,6 +3,7 @@
   align-items: flex-start;
   gap: 2rem;
   cursor: pointer;
+  position: relative;
 }
 
 .chapter-progress {
@@ -49,6 +50,9 @@
 .chapter-arrow {
   display: none;
   align-items: center;
+  position: absolute;
+  right: 5%;
+  top: 50%;
 }
 
 .chapter-container:hover .chapter-arrow {

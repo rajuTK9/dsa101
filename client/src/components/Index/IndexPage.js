@@ -51,19 +51,17 @@ export default function IndexPage() {
         <div
           className={navbarCollapse ? "index-navbar expand" : "index-navbar"}
         >
-          {topics ? (
+          {topics.length > 0 ? (
             topics.map((e, i) => {
-              if (courseData && courseData[0].topic === e)
-                return (
-                  <NavItem
-                    title={e}
-                    key={i}
-                    isActive="true"
-                    setCourseData={setCourseData}
-                  />
-                );
               return (
-                <NavItem title={e} key={i} setCourseData={setCourseData} />
+                <NavItem
+                  title={e}
+                  key={i}
+                  isActive={
+                    courseData && courseData[0].topic === e ? "true" : ""
+                  }
+                  setCourseData={setCourseData}
+                />
               );
             })
           ) : (
@@ -101,25 +99,16 @@ export default function IndexPage() {
           <div className="index-chapters-container">
             {courseData ? (
               courseData.map((e, i) => {
-                if (i === courseData.length - 1)
-                  return (
-                    <Chapter
-                      title={e.chapter}
-                      description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
-                      status={
-                        user && user.completed_chapters.includes(e.chapter)
-                          ? "l-done"
-                          : "l-pending"
-                      }
-                      key={i}
-                    />
-                  );
                 return (
                   <Chapter
                     title={e.chapter}
-                    description="Sagittis scelerisque leo suspendisse mauris sed semper dolor malesuada accumsan."
+                    description={e.chapter_description}
                     status={
-                      user && user.completed_chapters.includes(e.chapter)
+                      i === courseData.length - 1
+                        ? user && user.completed_chapters.includes(e.chapter)
+                          ? "l-done"
+                          : "l-pending"
+                        : user && user.completed_chapters.includes(e.chapter)
                         ? "done"
                         : "pending"
                     }

@@ -7,7 +7,9 @@ export default function Getdata() {
   useEffect(() => {
     const getdata = async () => {
       try {
-        const res = await fetch(`/get-user/${user.sub}`);
+        const res = await fetch(
+          `${process.env.REACT_APP_SERVER_URL}/get-user/${user.sub}`
+        );
         const data = await res.json();
 
         if (data.status === 422 || data.status === 500) {

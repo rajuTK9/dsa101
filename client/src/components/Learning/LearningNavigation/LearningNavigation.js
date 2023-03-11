@@ -18,7 +18,10 @@ export default function LearningNavigation(props) {
                 <div className="learning-btn-subtitle">Previous:</div>
                 <div className="learning-btn-title">
                   {" "}
-                  {chapterName.prevChapter.chapter}
+                  {chapterName.prevChapter.chapter
+                    .split(" ")
+                    .slice(0, 3)
+                    .join(" ") + "..."}
                 </div>
               </div>
             </div>
@@ -32,7 +35,10 @@ export default function LearningNavigation(props) {
               <div className="learning-btn-body">
                 <div className="learning-btn-subtitle">Next:</div>
                 <div className="learning-btn-title">
-                  {chapterName.nxtChapter.chapter}
+                  {chapterName.nxtChapter.chapter
+                    .split(" ")
+                    .slice(0, 3)
+                    .join(" ") + "..."}
                 </div>
               </div>
               <img src="/assets/icons/arrow-right-white.svg" alt="" />

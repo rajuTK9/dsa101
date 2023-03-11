@@ -9,6 +9,7 @@ export default function Loading() {
         alt=""
         className="loading-img"
       />
+      <h1 className="loading-title">Loading...</h1>
     </div>
   );
 }

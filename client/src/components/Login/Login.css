@@ -1,3 +1,7 @@
+.login-container {
+  position: relative;
+}
+
 .google-login-btn {
   padding: 0.8rem 2.4rem;
   display: flex;
@@ -21,6 +25,49 @@
 .google-logo {
   width: 2.7rem;
   border-radius: 100%;
+}
+
+.logoutAlert {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+
+  background-color: var(--milky-white);
+  color: var(--black);
+  padding: 2rem;
+  position: absolute;
+  width: 30rem;
+  border-radius: 1rem;
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 2.7rem;
+  border: 2px solid var(--tropical-indigo);
+  top: 5rem;
+  right: 10px;
+}
+
+.alert-btn-container {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.alert-btn {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+
+  color: var(--black);
+  background-color: var(--periwinkle);
+
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.alert-btn.no {
+  color: var(--white);
+  background-color: var(--tropical-indigo);
 }
 
 @media (max-width: 480px) {

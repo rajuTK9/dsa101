@@ -5,7 +5,7 @@ export default function GetCourse(query) {
   useEffect(() => {
     const getCourse = async () => {
       try {
-        const res = await fetch(query);
+        const res = await fetch(process.env.REACT_APP_SERVER_URL + query);
         const data = await res.json();
 
         if (data.status === 422 || data.status === 500) {
