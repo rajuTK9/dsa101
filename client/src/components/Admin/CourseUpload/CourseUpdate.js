@@ -5,11 +5,14 @@ import FormQuiz from "./FormQuiz/FormQuiz";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
 import GetCourse from "../../../data/GetCourse";
+import GetTopics from "../../../data/GetTopics";
 
 export default function CourseUpdate() {
   const [isSaved, setIsSaved] = useState(false);
   const params = useParams();
   const navigate = useNavigate();
+
+  const topics = GetTopics();
 
   const oldData = GetCourse(`/chapters/${params.id}`);
   const editor = useRef(null);
@@ -80,7 +83,7 @@ export default function CourseUpdate() {
   return (
     <div className="course-upload-container">
       <h1 className="heading">UPDATE the course</h1>
-      {formData && (
+      {formData && topics && (
         <form method="PUT" onSubmit={updateChapter} className="course-form">
           <div className="form-item-wrapper">
             <div className="form-item">
@@ -104,17 +107,13 @@ export default function CourseUpdate() {
                 onChange={onChangeHandler}
                 defaultValue={formData.topic}
               >
-                <option value={"Basics of C++"}>Basics of C++</option>
-                <option value={"Strings"}>Strings</option>
-                <option value={"Arrays"}>Array</option>
-                <option value={"Loops"}>Loops</option>
-                <option value={"Linked List"}>Linked List</option>
-                <option value={"Hashmap"}>Hashmap</option>
-                <option value={"Heap"}>Heap</option>
-                <option value={"D.P."}>D.P.</option>
-                <option value={"Vector"}>Vector</option>
-                <option value={"Queue"}>Queue</option>
-                <option value={"Stack"}>Stack</option>
+                {topics.map((e, i) => {
+                  return (
+                    <option key={i} value={e}>
+                      {e}
+                    </option>
+                  );
+                })}
               </select>
             </div>
           </div>

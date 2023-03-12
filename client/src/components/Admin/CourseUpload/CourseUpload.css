@@ -79,3 +79,11 @@
 .jodit-status-bar a.jodit-status-bar-link {
   display: none;
 }
+
+.add-topic-btn {
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.6rem;
+}
