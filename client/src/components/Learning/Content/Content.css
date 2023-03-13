@@ -49,6 +49,8 @@
   font-size: 1.4rem !important;
   line-height: 2rem !important;
   letter-spacing: 0.1rem !important;
+
+  cursor: pointer;
 }
 
 .learning-content blockquote svg {
@@ -62,6 +64,17 @@
   font-weight: 700 !important;
   font-size: 1.8rem !important;
   line-height: 2.3rem !important;
+}
+
+blockquote .question-arrow {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 3%;
+}
+
+blockquote:hover .question-arrow {
+  display: block;
 }
 
 .learning-content p {

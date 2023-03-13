@@ -14,11 +14,27 @@ export default function Content(props) {
     });
 
     if (headings.length < 1) setChapterIndex([]);
+
+    const codingQuestions = document.querySelectorAll("blockquote a");
+    codingQuestions.forEach((e) => {
+      e.parentElement.onclick = () => {
+        window.open(e.getAttribute("href"), "_blank");
+      };
+    });
+
+    const blockquotes = document.querySelectorAll("blockquote");
+    blockquotes.forEach((e) => {
+      e.innerHTML += `<img
+      src="/assets/icons/arrow-right.svg"
+      alt=""
+      class="question-arrow"
+    />`;
+    });
   }, [setChapterIndex, data]);
 
   return (
     <>
-      <h1 className="chapter-title" autofocus>
+      <h1 className="chapter-title" autoFocus>
         {title}
       </h1>
       <div className="index-divider"></div>

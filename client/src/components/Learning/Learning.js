@@ -22,15 +22,15 @@ export default function Learning() {
 
   const params = useParams();
   const navigate = useNavigate();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [params]);
+
   useEffect(() => {
     setQuizRendering("");
     setUserAnswer([]);
     setScore(0);
     setAttempted(0);
     setIsSubmitted(false);
+
+    window.scrollTo(0, 0);
   }, [params]);
 
   const courseData = GetCourse(`/chapters/${params.id}`);
