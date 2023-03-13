@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./Content.css";
 
 export default function Content(props) {
-  const { data, title, setChapterIndex } = props;
+  const { data, title, setChapterIndex, chapterId } = props;
   useEffect(() => {
     const headings = document.querySelectorAll(".learning-content h1");
     let chapters = [];
@@ -20,11 +20,8 @@ export default function Content(props) {
       e.parentElement.onclick = () => {
         window.open(e.getAttribute("href"), "_blank");
       };
-    });
 
-    const blockquotes = document.querySelectorAll("blockquote");
-    blockquotes.forEach((e) => {
-      e.innerHTML += `<img
+      e.parentElement.innerHTML += `<img
       src="/assets/icons/arrow-right.svg"
       alt=""
       class="question-arrow"
@@ -35,7 +32,7 @@ export default function Content(props) {
   return (
     <>
       <h1 className="chapter-title" autoFocus>
-        {title}
+        {`#${chapterId}. ${title}`}
       </h1>
       <div className="index-divider"></div>
       <div

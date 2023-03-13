@@ -90,6 +90,7 @@ export default function Learning() {
                 setChapterIndex={setChapterIndex}
                 data={courseData.content}
                 title={courseData.chapter}
+                chapterId={courseData.chapterId}
               />
               <div className="learning-quiz">
                 {quizRendering === "" ? (
