@@ -12,6 +12,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import Protected from "./Protected";
 import NotFound from "./components/NotFound/NotFound";
 import Loading from "./components/Loading/Loading";
+import AddTopics from "./components/Admin/AddTopics/AddTopics";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route element={<Protected />}>
           <Route path="/admin-upload" element={<CourseUpload />} />
           <Route path="/admin-upload/:id" element={<CourseUpdate />} />
+          <Route path="/admin-topics" element={<AddTopics />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

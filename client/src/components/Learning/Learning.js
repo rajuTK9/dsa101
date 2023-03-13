@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Quiz from "./Quiz/Quiz";
 import "./Learning.css";
 import Result from "./Quiz/Result/Result";
@@ -22,6 +22,14 @@ export default function Learning() {
 
   const params = useParams();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setQuizRendering("");
+    setUserAnswer([]);
+    setScore(0);
+    setAttempted(0);
+    setIsSubmitted(false);
+  }, [params]);
 
   const courseData = GetCourse(`/chapters/${params.id}`);
   const user = GetUser();

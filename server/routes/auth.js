@@ -3,6 +3,7 @@ const router = express.Router();
 
 const Course = require("../model/courseSchema");
 const User = require("../model/userSchema");
+const Topics = require("../model/topicSchema");
 
 router.get("/", (req, res) => {
   res.send("DSA101 Home");
@@ -77,6 +78,15 @@ router.get("/chapterId/:category/:id", async (req, res) => {
   }
 });
 
+router.get("/get-topics", async (req, res) => {
+  try {
+    const data = await Topics.findOne({});
+    res.json(data.topics);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 router.post("/admin-upload", async (req, res) => {
   const {
     category,
@@ -136,10 +146,36 @@ router.post("/login", async (req, res) => {
       uid: uid,
     });
     if (user) {
-      return res.status(201).json({ message: "User already exist." });
+      return res.status(201).json({ message: "User already exists." });
     }
     const data = new User({ name, notes, uid, completed_chapters });
     await data.save();
+  } catch (err) {
+    res.status(500).json({
+      error: "An error occured, please try again later. \n Error:",
+      err,
+    });
+  }
+});
+
+router.put("/add-topic", async (req, res) => {
+  const { newTopic } = req.body;
+  if (newTopic === "") {
+    return res.status(422).json({ error: "Incomplete information" });
+  }
+  try {
+    const data = await Topics.findOne({});
+    if (data.topics.includes(newTopic)) {
+      return res
+        .status(201)
+        .json({ message: `Topic: ${newTopic} already exists.` });
+    }
+    data.topics.push(newTopic);
+    data.topics.sort();
+    await data.save();
+    res
+      .status(201)
+      .json({ message: `Topic: ${newTopic} added saved successfully.` });
   } catch (err) {
     res.status(500).json({
       error: "An error occured, please try again later. \n Error:",
