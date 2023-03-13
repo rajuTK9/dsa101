@@ -18,7 +18,9 @@ export default function Content(props) {
 
   return (
     <>
-      <h1 className="chapter-title">{title}</h1>
+      <h1 className="chapter-title" autofocus>
+        {title}
+      </h1>
       <div className="index-divider"></div>
       <div
         className="learning-content"

@@ -22,7 +22,9 @@ export default function Learning() {
 
   const params = useParams();
   const navigate = useNavigate();
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [params]);
   useEffect(() => {
     setQuizRendering("");
     setUserAnswer([]);
@@ -55,7 +57,9 @@ export default function Learning() {
   };
 
   function handleDelete() {
-    const concent = prompt(`Type 'y' to delte "${courseData.chapter}" chapter`);
+    const concent = prompt(
+      `Type 'y' to delete "${courseData.chapter}" chapter`
+    );
     if (concent === "y") {
       deleteChapter();
       navigate(`/${courseData.category}`);
