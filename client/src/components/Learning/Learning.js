@@ -76,7 +76,7 @@ export default function Learning() {
             <div className="learning-content-container">
               {user && user.isAdmin && (
                 <div className="admin-btns">
-                  <Link to={`/admin-upload/${courseData.chapter}`}>
+                  <Link to={`/admin-update/${courseData.chapter}`}>
                     <button className="chapter-edit-btn">
                       <img src="/assets/icons/notes-edit.svg" alt="" />
                     </button>
