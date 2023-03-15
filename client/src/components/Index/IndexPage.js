@@ -57,6 +57,7 @@ export default function IndexPage() {
                 <NavItem
                   title={e}
                   key={i}
+                  category={params.id}
                   isActive={
                     courseData && courseData[0].topic === e ? "true" : ""
                   }

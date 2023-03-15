@@ -36,9 +36,12 @@ router.get("/categories/:id", async (req, res) => {
   }
 });
 
-router.get("/topics/:id", async (req, res) => {
+router.get("/topics/:category/:id", async (req, res) => {
   try {
-    const courseData = await Course.find({ topic: req.params.id }).sort({
+    const courseData = await Course.find({
+      topic: req.params.id,
+      category: req.params.category,
+    }).sort({
       chapterId: 1,
     });
     res.json(courseData);
