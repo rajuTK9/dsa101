@@ -92,47 +92,48 @@ export default function Learning() {
                 title={courseData.chapter}
                 chapterId={courseData.chapterId}
               />
-              <div className="learning-quiz">
-                {quizRendering === "" ? (
-                  <TakeQuiz setQuizRendering={setQuizRendering} />
-                ) : quizRendering === "quiz" ? (
-                  <Quiz
-                    setQuizRendering={setQuizRendering}
-                    setScore={setScore}
-                    score={score}
-                    setUserAnswer={setUserAnswer}
-                    userAnswer={userAnswer}
-                    setAttempted={setAttempted}
-                    attempted={attempted}
-                    setIsSubmitted={setIsSubmitted}
-                    isSubmitted={isSubmitted}
-                    courseData={courseData}
-                  />
-                ) : quizRendering === "result" ? (
-                  <Result
-                    setQuizRendering={setQuizRendering}
-                    score={score}
-                    attempted={attempted}
-                  />
-                ) : quizRendering === "answer" ? (
-                  // <Answer setQuizRendering={setQuizRendering} />
-                  <Quiz
-                    setQuizRendering={setQuizRendering}
-                    setScore={setScore}
-                    score={score}
-                    setUserAnswer={setUserAnswer}
-                    userAnswer={userAnswer}
-                    setAttempted={setAttempted}
-                    attempted={attempted}
-                    setIsSubmitted={setIsSubmitted}
-                    isSubmitted={isSubmitted}
-                    courseData={courseData}
-                  />
-                ) : (
-                  <>OOPS! 404 - NOT FOUND...</>
-                )}
-              </div>
-
+              {courseData.quiz[0].question !== "" && (
+                <div className="learning-quiz">
+                  {quizRendering === "" ? (
+                    <TakeQuiz setQuizRendering={setQuizRendering} />
+                  ) : quizRendering === "quiz" ? (
+                    <Quiz
+                      setQuizRendering={setQuizRendering}
+                      setScore={setScore}
+                      score={score}
+                      setUserAnswer={setUserAnswer}
+                      userAnswer={userAnswer}
+                      setAttempted={setAttempted}
+                      attempted={attempted}
+                      setIsSubmitted={setIsSubmitted}
+                      isSubmitted={isSubmitted}
+                      courseData={courseData}
+                    />
+                  ) : quizRendering === "result" ? (
+                    <Result
+                      setQuizRendering={setQuizRendering}
+                      score={score}
+                      attempted={attempted}
+                    />
+                  ) : quizRendering === "answer" ? (
+                    // <Answer setQuizRendering={setQuizRendering} />
+                    <Quiz
+                      setQuizRendering={setQuizRendering}
+                      setScore={setScore}
+                      score={score}
+                      setUserAnswer={setUserAnswer}
+                      userAnswer={userAnswer}
+                      setAttempted={setAttempted}
+                      attempted={attempted}
+                      setIsSubmitted={setIsSubmitted}
+                      isSubmitted={isSubmitted}
+                      courseData={courseData}
+                    />
+                  ) : (
+                    <>OOPS! 404 - NOT FOUND...</>
+                  )}
+                </div>
+              )}
               <LearningNavigation
                 category={courseData.category}
                 chapterId={courseData.chapterId}

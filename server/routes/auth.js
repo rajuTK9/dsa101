@@ -18,6 +18,19 @@ router.get("/get-course", async (req, res) => {
   }
 });
 
+router.get("/get-chapters", async (req, res) => {
+  try {
+    const data = await Course.find({});
+    const chapterData = [];
+    data.forEach((e) => {
+      chapterData.push(e.chapter);
+    });
+    res.json(chapterData);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 router.get("/get-user/:id", async (req, res) => {
   try {
     const userData = await User.find({ uid: req.params.id });
