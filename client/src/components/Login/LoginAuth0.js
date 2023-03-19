@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Login.css";
 import Loading from "../Loading/Loading";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function LoginAuth0() {
   const { loginWithRedirect, user, isAuthenticated, isLoading, logout } =
@@ -26,7 +28,7 @@ export default function LoginAuth0() {
       const data = await res.json();
 
       if (data.status === 422 || data.status === 500) {
-        alert(data.error);
+        toast.error(data.error);
       } else {
         console.log(data.message);
       }
@@ -79,6 +81,7 @@ export default function LoginAuth0() {
           </div>
         </div>
       )}
+      <ToastContainer />
     </div>
   );
 }

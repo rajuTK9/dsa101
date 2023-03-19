@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./Quiz.css";
 import Option from "./Option/Option";
 import GetUser from "../../../data/GetUser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Quiz(props) {
   const [count, setCount] = useState(0);
@@ -39,7 +41,7 @@ export default function Quiz(props) {
       );
       const data = await res.json();
       if (data.status === 422 || data.status === 500) {
-        alert(data.error);
+        toast.error(data.error);
         return data.error;
       } else {
         console.log(data.message);
@@ -153,6 +155,7 @@ export default function Quiz(props) {
           </button>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
