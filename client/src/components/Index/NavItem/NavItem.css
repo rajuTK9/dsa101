@@ -7,7 +7,7 @@
 
 .nav-item:hover {
   background-color: var(--periwinkle);
-  border-radius: 1rem;
+  border-radius: 0 1rem 1rem 0;
 }
 
 .nav-item-txt {

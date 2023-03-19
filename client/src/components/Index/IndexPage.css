@@ -16,7 +16,7 @@
   background: var(--milky-grey);
   border-radius: 0rem 2rem 2rem 0rem;
 
-  height: fit-content;
+  min-height: 45vh;
 
   transition: 0.5s;
 }

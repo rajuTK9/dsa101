@@ -3,7 +3,7 @@ import "./NavItem.css";
 import GetCourse from "../../../data/GetCourse";
 
 export default function NavItem(props) {
-  const data = GetCourse(`/topics/${props.title}`);
+  const data = GetCourse(`/topics/${props.category}/${props.title}`);
   function changeTopic() {
     props.setCourseData(data);
   }

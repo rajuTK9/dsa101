@@ -18,6 +18,19 @@ router.get("/get-course", async (req, res) => {
   }
 });
 
+router.get("/get-chapters", async (req, res) => {
+  try {
+    const data = await Course.find({});
+    const chapterData = [];
+    data.forEach((e) => {
+      chapterData.push(e.chapter);
+    });
+    res.json(chapterData);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 router.get("/get-user/:id", async (req, res) => {
   try {
     const userData = await User.find({ uid: req.params.id });
@@ -36,9 +49,14 @@ router.get("/categories/:id", async (req, res) => {
   }
 });
 
-router.get("/topics/:id", async (req, res) => {
+router.get("/topics/:category/:id", async (req, res) => {
   try {
-    const courseData = await Course.find({ topic: req.params.id });
+    const courseData = await Course.find({
+      topic: req.params.id,
+      category: req.params.category,
+    }).sort({
+      chapterId: 1,
+    });
     res.json(courseData);
   } catch (error) {
     res.status(500).json({ message: error.message });

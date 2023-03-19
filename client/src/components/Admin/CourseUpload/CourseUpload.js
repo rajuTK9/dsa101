@@ -3,15 +3,17 @@ import JoditEditor from "jodit-react";
 import "./CourseUpload.css";
 import FormQuiz from "./FormQuiz/FormQuiz";
 import GetTopics from "../../../data/GetTopics";
+import { useNavigate } from "react-router";
 
 export default function CourseUpload() {
   const [isSaved, setIsSaved] = useState(false);
   const editor = useRef(null);
   const topics = GetTopics();
+  const navigate = useNavigate();
 
   const initialValues = {
     category: "Basics",
-    topic: "Basics of C++",
+    topic: "",
     chapter: "",
     chapter_description: "",
     content: "",
@@ -65,6 +67,7 @@ export default function CourseUpload() {
     } else {
       alert("Chapter added scuccessfully!");
       setIsSaved(true);
+      navigate(`/admin-update/${formData.chapter}`);
     }
   };
 
@@ -95,6 +98,7 @@ export default function CourseUpload() {
                 id="course-category"
                 onChange={onChangeHandler}
               >
+                <option value="">Select a Category</option>
                 <option value={"Basics"}>Basics</option>
                 <option value={"DSA Starter"}>DSA Starter</option>
                 <option value={"Adv. DSA"}>Adv. DSA</option>
@@ -103,6 +107,7 @@ export default function CourseUpload() {
             <div className="form-item">
               <label htmlFor="course-topic">Topic</label>
               <select name="topic" id="course-topic" onChange={onChangeHandler}>
+                <option value="">Select a Topic</option>
                 {topics.map((e, i) => {
                   return (
                     <option key={i} value={e}>
