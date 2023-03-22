@@ -11,6 +11,8 @@ import GetUser from "../../data/GetUser";
 import { useParams, useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import Loading from "../Loading/Loading";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Learning() {
   const [quizRendering, setQuizRendering] = useState("");
@@ -46,10 +48,11 @@ export default function Learning() {
       );
       const data = await res.json();
       if (data.status === 422 || data.status === 500) {
-        alert(data.error);
+        toast.error(data.error);
         return data.error;
       } else {
         alert(data.message);
+        navigate(`/${courseData.category}`);
       }
     } catch (err) {
       return "An erros occured: " + err;
@@ -60,10 +63,7 @@ export default function Learning() {
     const concent = prompt(
       `Type 'y' to delete "${courseData.chapter}" chapter`
     );
-    if (concent === "y") {
-      deleteChapter();
-      navigate(`/${courseData.category}`);
-    }
+    if (concent === "y") deleteChapter();
   }
   return (
     <>
@@ -144,6 +144,7 @@ export default function Learning() {
           <Loading />
         )}
       </div>
+      <ToastContainer />
     </>
   );
 }

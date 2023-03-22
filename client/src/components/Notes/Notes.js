@@ -3,6 +3,8 @@ import JoditEditor from "jodit-react";
 import "./Notes.css";
 import { useNavigate } from "react-router";
 import GetUser from "../../data/GetUser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function EditNotes() {
   const user = GetUser();
@@ -32,10 +34,10 @@ export default function EditNotes() {
       );
       const data = await res.json();
       if (data.status === 422 || data.status === 500) {
-        alert(data.error);
+        toast.error(data.error);
         return data.error;
       } else {
-        alert(data.message);
+        toast.success(data.message);
         setIsChanged(false);
       }
     } catch (err) {
@@ -80,7 +82,7 @@ export default function EditNotes() {
           }}
         />
       </div>
-      {/* <p dangerouslySetInnerHTML={{ __html: text }}></p> */}
+      <ToastContainer />
     </div>
   );
 }

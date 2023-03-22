@@ -6,6 +6,8 @@ import { useParams } from "react-router";
 import { useNavigate } from "react-router";
 import GetCourse from "../../../data/GetCourse";
 import GetTopics from "../../../data/GetTopics";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CourseUpdate() {
   const [isSaved, setIsSaved] = useState(false);
@@ -48,13 +50,13 @@ export default function CourseUpdate() {
         }),
       });
       const data = await res.json();
-      navigate(`/learning/${chapter}`);
       if (data.status === 422 || data.status === 500) {
-        alert(data.error);
+        toast.error(data.error);
         return data.error;
       } else {
         alert(data.message);
         setIsSaved(true);
+        navigate(`/learning/${chapter}`);
       }
     } catch (err) {
       console.log("An error occured: " + err);
@@ -203,6 +205,7 @@ export default function CourseUpdate() {
           </button>
         </form>
       )}
+      <ToastContainer />
     </div>
   );
 }

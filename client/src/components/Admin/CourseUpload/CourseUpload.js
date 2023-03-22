@@ -4,6 +4,8 @@ import "./CourseUpload.css";
 import FormQuiz from "./FormQuiz/FormQuiz";
 import GetTopics from "../../../data/GetTopics";
 import { useNavigate } from "react-router";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CourseUpload() {
   const [isSaved, setIsSaved] = useState(false);
@@ -63,7 +65,7 @@ export default function CourseUpload() {
     );
     const data = await res.json();
     if (data.status === 422 || data.status === 500) {
-      alert(data.error);
+      toast.error(data.error);
     } else {
       alert("Chapter added scuccessfully!");
       setIsSaved(true);
@@ -204,6 +206,7 @@ export default function CourseUpload() {
             Submit
           </button>
         </form>
+        <ToastContainer />
       </div>
     )
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import PayMeButton from "../PayMe/PayMeButton/PayMeButton";
 import Card from "./Card/Card";
 import "./Home.css";
 
@@ -16,6 +17,7 @@ export default function Home() {
           img={"/assets/illustrations/advanced-dsa.svg"}
         />
       </div>
+      <PayMeButton />
     </div>
   );
 }

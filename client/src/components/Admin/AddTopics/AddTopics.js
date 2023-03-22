@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import GetTopics from "../../../data/GetTopics";
 import "../CourseUpload/CourseUpload.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function AddTopics() {
   const [newTopic, setNewTopic] = useState("");
   const topics = GetTopics();
+
   function onChangeHandler(e) {
     setNewTopic(e.target.value);
   }
@@ -22,10 +25,10 @@ export default function AddTopics() {
       });
       const data = await res.json();
       if (data.error) {
-        alert(data.error);
+        toast.error(data.error);
         return data.error;
       } else {
-        alert(data.message);
+        toast(data.message);
       }
     } catch (err) {
       console.log("An error occured: " + err);
@@ -57,6 +60,7 @@ export default function AddTopics() {
             </button>
           </div>
         </form>
+        <ToastContainer />
       </div>
     )
   );

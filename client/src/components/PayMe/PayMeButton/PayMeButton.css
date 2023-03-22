@@ -1,0 +1,12 @@
+.pay-me-btn {
+  border-radius: 10px;
+  background-color: transparent;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 3%;
+}
+
+.pay-me-btn img {
+  height: 5rem;
+}

@@ -13,6 +13,7 @@ import Protected from "./Protected";
 import NotFound from "./components/NotFound/NotFound";
 import Loading from "./components/Loading/Loading";
 import AddTopics from "./components/Admin/AddTopics/AddTopics";
+import PayMe from "./components/PayMe/PayMe";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/payme" element={<PayMe />} />
         <Route path="/loading" element={<Loading />} />
         <Route path="/404" element={<NotFound />} />
         <Route path="/:id" element={<IndexPage />} />
