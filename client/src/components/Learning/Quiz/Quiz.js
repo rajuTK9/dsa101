@@ -93,7 +93,10 @@ export default function Quiz(props) {
     if (count < 4) setCount((count) => (count += 1));
     else {
       setIsSubmitted(true);
-      user.completed_chapters.push(courseData.chapter);
+      user.completed_chapters.push({
+        category: courseData.category,
+        chapter: courseData.chapter,
+      });
       user.completed_chapters = removeDuplicates(user.completed_chapters);
       markAsDone();
       setQuizRendering("result");

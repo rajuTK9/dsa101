@@ -92,7 +92,7 @@ export default function Learning() {
                 title={courseData.chapter}
                 chapterId={courseData.chapterId}
               />
-              {courseData.quiz[0].question !== "" && (
+              {courseData.quiz[0].question !== "" ? (
                 <div className="learning-quiz">
                   {quizRendering === "" ? (
                     <TakeQuiz setQuizRendering={setQuizRendering} />
@@ -133,6 +133,12 @@ export default function Learning() {
                     <>OOPS! 404 - NOT FOUND...</>
                   )}
                 </div>
+              ) : (
+                <TakeQuiz
+                  markDone={true}
+                  category={courseData.category}
+                  chapter={courseData.chapter}
+                />
               )}
               <LearningNavigation
                 category={courseData.category}

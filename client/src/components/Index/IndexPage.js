@@ -16,6 +16,7 @@ export default function IndexPage() {
   const [courseData, setCourseData] = useState();
   const params = useParams();
   const navigate = useNavigate();
+  const chpaters = [];
 
   let topics = [];
 
@@ -43,6 +44,11 @@ export default function IndexPage() {
   }
 
   topics = removeDuplicates(topics);
+
+  if (user)
+    user.completed_chapters.forEach((e) => {
+      chpaters.push(e.chapter);
+    });
 
   return (
     <div key={params.id} className="index-container">
@@ -106,10 +112,10 @@ export default function IndexPage() {
                     description={e.chapter_description}
                     status={
                       i === courseData.length - 1
-                        ? user && user.completed_chapters.includes(e.chapter)
+                        ? user && chpaters.includes(e.chapter)
                           ? "l-done"
                           : "l-pending"
-                        : user && user.completed_chapters.includes(e.chapter)
+                        : user && chpaters.includes(e.chapter)
                         ? "done"
                         : "pending"
                     }

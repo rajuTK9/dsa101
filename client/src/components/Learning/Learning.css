@@ -19,6 +19,12 @@
   display: none;
 }
 
+.mark-as-done {
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-left: auto;
+}
+
 .admin-btns {
   display: flex;
   gap: 1rem;
