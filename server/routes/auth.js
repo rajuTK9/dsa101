@@ -217,6 +217,7 @@ router.put("/save-notes", async (req, res) => {
   }
 });
 
+// save data of completed chapters by user.
 router.put("/update-chapter", async (req, res) => {
   const { completed_chapters, uid } = req.body;
   try {
