@@ -4,7 +4,6 @@ DSA101 is a free resource for everyone to learn Data Structures and Algorithms. 
 
 All resources on the website are free to access and use.
 
-[Count Code Lines](https://nikjos.in/code-line-counter/open?repo=kalviumcommunity/dsa101)
 Milstones for this project:
 1. Come up with a detailed checklist (in a spreadsheet).
 2. Build a low-fid design for how the checklist looks for an end user.
