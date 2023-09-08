@@ -4,7 +4,7 @@ DSA101 is a free resource for everyone to learn Data Structures and Algorithms. 
 
 All resources on the website are free to access and use.
 
-Milstones for this project:
+Milestones for this project:
 1. Come up with a detailed checklist (in a spreadsheet).
 2. Build a low-fid design for how the checklist looks for an end user.
 3. Set up the DB for the course.
@@ -12,7 +12,22 @@ Milstones for this project:
 5. Login functionality.
 6. Set up the DB for users.
 7. Frontend
-8. Integrate backend with frontend
+8. Integrate the backend with frontend
 9. Admin page.
 10. Deploy.
 11. Upload the course.
+
+## .env file format
+### Server
+```
+DATABASE=mongodb+srv://<USERNAME>:<PASSWORD>@dsa101.4cd4s4c.mongodb.net/?retryWrites=true&w=majority
+```
+
+### Client
+```
+REACT_APP_CLIENT_ID=XXXXX
+REACT_APP_DOMAIN=XXXXX
+REACT_APP_RAZORPAY_KEY=XXXXX
+REACT_APP_RAZORPAY_SECRET=XXXXX
+REACT_APP_SERVER_URL=XXXXX
+```
